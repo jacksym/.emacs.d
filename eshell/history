@@ -1,0 +1,41 @@
+ls
+cd .emacs.d
+ls
+cd elpa
+ls
+cd .emacs.d
+ls
+cd themes
+ls
+rm solarized*
+ls
+cd .emacs.d
+ls
+cd themes
+ls
+mv color-theme-solarized.el solarized-theme.el
+cd ..
+ls
+rm session.106917738e8e2c562116141024701234000000065930065
+ls
+rm #init.el#
+rm init.el~
+ls
+cd url
+ls
+cd cache
+ls
+cd jack
+ls
+cd http
+ls
+cd com
+ls
+cd goog
+cd ~/.emacs.d
+rm -r url
+ls
+cd eshell
+ls
+cd history
+ls
