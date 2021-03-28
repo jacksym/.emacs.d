@@ -8,6 +8,7 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 ;; (load-theme 'monokai t)
+;; (load-theme 'autumn-light t)
 
 ;; (set-frame-font "Monego-12")
-(set-face-attribute 'default nil :family "Monego")
+(set-face-attribute 'default nil :family "Monego" :height 140)
