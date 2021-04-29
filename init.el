@@ -5,6 +5,9 @@
 (setq inhibit-splash-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
+;; (desktop-save-mode 1)
+(setq use-dialog-box nil)
+(show-paren-mode 1) (setq show-paren-delay 0)
 
 (global-visual-line-mode t)
 
@@ -18,10 +21,9 @@
 
 (set-register ?i '(file . "~/.emacs.d/init.el"))
 (set-register ?e '(file . "~/.emacs.d/early-init.el"))
-(set-register ?h '(file . "~/prj/pl.py"))
+(set-register ?h '(file . "~/pyhe/he.py"))
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
-
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -32,6 +34,7 @@
 (setq ein:output-area-inlined-images t)
 (require 'which-key)
 (which-key-mode t)
+;; (global-flycheck-mode t)
 (evil-mode t)
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-define-key 'normal 'global
@@ -44,6 +47,25 @@
   (kbd "<leader> K") 'evil-window-move-very-top
   (kbd "<leader> L") 'evil-window-move-far-right
   )
+
+(global-set-key (kbd "M-B") 'windmove-left)
+(global-set-key (kbd "M-N") 'windmove-down)
+(global-set-key (kbd "M-P") 'windmove-up)
+(global-set-key (kbd "M-F") 'windmove-right)
+(global-set-key (kbd "C-x M-B") 'evil-window-move-far-left)
+(global-set-key (kbd "C-x M-N") 'evil-window-move-very-bottom)
+(global-set-key (kbd "C-x M-P") 'evil-window-move-very-top)
+(global-set-key (kbd "C-x M-F") 'evil-window-move-far-right)
+
+(evil-define-key 'normal 'global (kbd "<leader> /") 'comment-line)
+(evil-define-key 'visual 'global (kbd "<leader> /") 'comment-region)
+
+
+(defun my-shell-python ()
+  (interactive)
+  ;; (save-buffer)
+  (shell-command-on-region (point-min) (point-max) "python3"))
+(evil-define-key 'normal 'global (kbd "<leader> c") 'my-shell-python)
 
 
 
@@ -85,19 +107,31 @@
 			      ))
 ;; (add-hook 'python-mode-hook #'lsp)
 
+
 (setq python-shell-interpreter "python3")
-
-(defun my-restart-python-console ()
-  "Restart python console before evaluate buffer or region to avoid various uncanny conflicts, like not reloding modules even when they are changed"
+;; Run python and pop-up its shell.
+;; Kill process to solve the reload modules problem.
+(defun my-python-shell-restart ()
+;; Kill process to solve the reload modules problem.
   (interactive)
-  (if (get-buffer "*Python*")
-      (let ((kill-buffer-query-functions nil)) (kill-buffer "*Python*")))
+  (when (get-buffer-process "*Python*")
+     (set-process-query-on-exit-flag (get-buffer-process "*Python*") nil)
+     (kill-process (get-buffer-process "*Python*"))
+     ;; If you want to clean the buffer too.
+     ;;(kill-buffer "*Python*")
+     ;; Not so fast!
+     (sleep-for 0.1))
   (run-python)
-  ;; (other-window -1)
-  ;; (python-shell-send-buffer)
-)
+  (other-window -1)
+  ;; Pop new window only if shell isnt visible
+  ;; in any frame.
+  (unless (get-buffer-window "*Python*" t) 
+    (python-shell-switch-to-shell)))
 
-(global-set-key (kbd "C-c C-x C-c") 'my-restart-python-console)
+(eval-after-load "python"
+  '(progn
+     (define-key python-mode-map (kbd "C-c C-k") 'my-python-shell-restart)
+))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
