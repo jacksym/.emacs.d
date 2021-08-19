@@ -1,0 +1,3 @@
+
+hello_world: hello.cpp
+	g++ -Wall -g hello.cpp -o hello_world

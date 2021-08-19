@@ -77,16 +77,6 @@
 (evil-define-key 'visual 'global (kbd "<leader> /") 'comment-region)
 
 
-(evil-define-key 'normal 'global (kbd "<leader> s") 'shell)
-(evil-define-key 'normal 'global (kbd "<leader> q") 'delete-window)
-
-(defun kill-and-close ()
-  (interactive)
-  (kill-buffer)
-  (delete-window))
-
-(evil-define-key 'normal 'global (kbd "<leader> Q") 'kill-and-close)
-
 (load-file "~/.emacs.d/lang.el")
 
 
@@ -100,7 +90,7 @@
  '(magit-diff-use-overlays nil)
  '(nil nil t)
  '(package-selected-packages
-   '(projectile lsp-mode ace-jump-mode ein which-key flycheck s request evil counsel chess)))
+   '(ace-jump-mode ein which-key flycheck s request evil counsel chess)))
 (put 'scroll-left 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -1,0 +1,12 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import data_proc
+
+
+path = "./ogle/"; event = "blg-0011"
+
+ogle1 = data_proc.OGLE_data(path+event)
+
+
+fig1, ax1 = plt.subplots()
+ogle1.plot(ax, event)
