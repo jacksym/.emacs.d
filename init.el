@@ -8,6 +8,7 @@
 ;; (desktop-save-mode 1)
 (setq use-dialog-box nil)
 (show-paren-mode 1) (setq show-paren-delay 0)
+(setq make-backup-files nil)
 
 (global-visual-line-mode t)
 
@@ -51,44 +52,17 @@
 (require 'which-key)
 (which-key-mode t)
 ;; (global-flycheck-mode t)
-(evil-mode t)
-(evil-set-leader 'normal (kbd "SPC"))
-(evil-define-key 'normal 'global
-  (kbd "<leader> h") 'windmove-left
-  (kbd "<leader> j") 'windmove-down
-  (kbd "<leader> k") 'windmove-up
-  (kbd "<leader> l") 'windmove-right
-  (kbd "<leader> H") 'evil-window-move-far-left
-  (kbd "<leader> J") 'evil-window-move-very-bottom
-  (kbd "<leader> K") 'evil-window-move-very-top
-  (kbd "<leader> L") 'evil-window-move-far-right
-  )
 
-(global-set-key (kbd "M-B") 'windmove-left)
-(global-set-key (kbd "M-N") 'windmove-down)
-(global-set-key (kbd "M-P") 'windmove-up)
-(global-set-key (kbd "M-F") 'windmove-right)
-(global-set-key (kbd "C-x M-B") 'evil-window-move-far-left)
-(global-set-key (kbd "C-x M-N") 'evil-window-move-very-bottom)
-(global-set-key (kbd "C-x M-P") 'evil-window-move-very-top)
-(global-set-key (kbd "C-x M-F") 'evil-window-move-far-right)
-
-(evil-define-key 'normal 'global (kbd "<leader> /") 'comment-line)
-(evil-define-key 'visual 'global (kbd "<leader> /") 'comment-region)
-
-
-(evil-define-key 'normal 'global (kbd "<leader> s") 'shell)
-(evil-define-key 'normal 'global (kbd "<leader> q") 'delete-window)
-
-(defun kill-and-close ()
-  (interactive)
-  (kill-buffer)
-  (delete-window))
-
-(evil-define-key 'normal 'global (kbd "<leader> Q") 'kill-and-close)
-
+(load-file "~/.emacs.d/evil.el")
 (load-file "~/.emacs.d/lang.el")
 
+(dolist (mode '(which-key-mode
+		ivy-mode
+		visual-line-mode
+		eldoc-mode
+		abbrev-mode
+		))
+  (setcar (alist-get mode minor-mode-alist) ""))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -96,8 +70,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("80d5a22931c15756b00fb258b80c93b8bc5096bb698dadfb6155ef3550e1c8fb" "f5a7e07642decb17b03483af7c44e93353d2b128de403bf301651954c628c0ab" "811fb81ee23af5a6480e0bc6bb4a56735dbee233aa5f13fe1f4b407de3e057c9" default))
- '(magit-diff-use-overlays nil)
+   '("2dff5f0b44a9e6c8644b2159414af72261e38686072e063aa66ee98a2faecf0e" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "80d5a22931c15756b00fb258b80c93b8bc5096bb698dadfb6155ef3550e1c8fb" "f5a7e07642decb17b03483af7c44e93353d2b128de403bf301651954c628c0ab" "811fb81ee23af5a6480e0bc6bb4a56735dbee233aa5f13fe1f4b407de3e057c9" default))
+ '(frame-background-mode nil)
  '(nil nil t)
  '(package-selected-packages
    '(projectile lsp-mode ace-jump-mode ein which-key flycheck s request evil counsel chess)))

@@ -28,18 +28,9 @@
 	(toggle-truncate-lines)
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
-	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-comp-run)
 	))
-
 (add-hook 'c++-mode-hook #'lsp)
 
-(defun my-shell-comp-run ()
-  (interactive)
-  (save-buffer)
-  ;; (shell-command-on-region (point-min) (point-max) "g++")
-  (shell-command (concat "g++ " buffer-file-name "&& ./a.out"))
-  ;; (shell-command "./a.out")
-  )
 
 
 ;; PYTHON
@@ -49,8 +40,6 @@
 	(toggle-truncate-lines)
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
-	;; (evil-local-set-key 'normal (kbd "<leader> c") 'my-shell-python)
-	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
 	))
 
 (setq python-shell-interpreter "python3")
@@ -59,12 +48,9 @@
   (interactive)
   ;; (save-buffer)
   (shell-command-on-region (point-min) (point-max) "python3"))
-;; (evil-define-key 'normal 'global (kbd "<leader> c") 'my-shell-python)
 
 ;; (add-hook 'python-mode-hook #'lsp)
 
-;; Run python and pop-up its shell.
-;; Kill process to solve the reload modules problem.
 (defun my-python-shell-restart ()
 ;; Kill process to solve the reload modules problem.
   (interactive)
