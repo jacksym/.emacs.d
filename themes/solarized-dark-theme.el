@@ -1,4 +1,4 @@
-;;; solarized-faces.el --- the faces definitions for solarized theme  -*- lexical-binding: t -*-
+;;; solarized.el --- Solarized theme  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2011-2021 Bozhidar Batsov
 
@@ -20,14 +20,395 @@
 
 ;;; Commentary:
 
-;; the faces definitions for solarized theme
+;; Main solarized file
 
 ;;; Code:
+(deftheme solarized-dark "The dark variant of the Solarized colour theme")
+
+
+(defgroup solarized nil
+  "Solarized theme options.
+The theme has to be reloaded after changing anything in this group."
+  :group 'faces)
+
+;;;###autoload
+
+(defcustom solarized-distinct-fringe-background nil
+  "Make the fringe background different from the normal background color.
+Also affects `linum-mode' background."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-distinct-doc-face nil
+  "Make `font-lock-doc-face' stand out more.
+Related discussion: https://github.com/bbatsov/solarized-emacs/issues/158"
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-use-variable-pitch t
+  "Use variable pitch face for some headings and titles."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-use-less-bold nil
+  "Use bold weight less often."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-use-more-italic nil
+  "Use italic slant more often."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-emphasize-indicators t
+  "Use more colors for indicators such as git:gutter, flycheck and similar."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-high-contrast-mode-line nil
+  "Make the active/inactive mode line stand out more."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-height-minus-1 0.8
+  "Font size -1."
+  :type 'number
+  :group 'solarized)
+
+(defcustom solarized-height-plus-1 1.1
+  "Font size +1."
+  :type 'number
+  :group 'solarized)
+
+(defcustom solarized-height-plus-2 1.15
+  "Font size +2."
+  :type 'number
+  :group 'solarized)
+
+(defcustom solarized-height-plus-3 1.2
+  "Font size +3."
+  :type 'number
+  :group 'solarized)
+
+(defcustom solarized-height-plus-4 1.3
+  "Font size +4."
+  :type 'number
+  :group 'solarized)
+
+(defcustom solarized-scale-org-headlines t
+  "Whether `org-mode' headlines should be scaled."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-scale-markdown-headlines nil
+  "Whether `markdown-mode' headlines should be scaled."
+  :type 'boolean
+  :group 'solarized)
+
+(defcustom solarized-scale-outline-headlines t
+  "Whether `outline-mode' headlines should be scaled."
+  :type 'boolean
+  :group 'solarized)
+
+
+;; Color Palette
+(defvar b-solarized-dark-color-palette-alist
+  '(;; solarized-dark palette
+    (base03      . "#002B36")
+    (base02      . "#073642")
+    (base01      . "#586E75")
+    (base00      . "#657B83")
+    (base0       . "#839496")
+    (base1       . "#93A1A1")
+    (base2       . "#EEE8D5")
+    (base3       . "#FDF6E3")
+    (yellow      . "#B58900")
+    (orange      . "#CB4B16")
+    (red         . "#DC322F")
+    (magenta     . "#D33682")
+    (violet      . "#6C71C4")
+    (blue        . "#268BD2")
+    (cyan        . "#2AA198")
+    (green       . "#859900")
+    (yellow-1bg  . "#273532")
+    (yellow-1fg  . "#AF8F41")
+    (yellow-2bg  . "#433E20")
+    (yellow-2fg  . "#B39A5E")
+    (yellow-d    . "#866300")
+    (yellow-l    . "#E1AF4B")
+    (orange-1bg  . "#2B2D2E")
+    (orange-1fg  . "#CA6F48")
+    (orange-2bg  . "#4D2C1F")
+    (orange-2fg  . "#C47C5D")
+    (orange-d    . "#992700")
+    (orange-l    . "#FB7640")
+    (red-1bg     . "#2D2C31")
+    (red-1fg     . "#D66556")
+    (red-2bg     . "#532725")
+    (red-2fg     . "#CE7667")
+    (red-d       . "#A7020A")
+    (red-l       . "#FF6849")
+    (magenta-1bg . "#272D3C")
+    (magenta-1fg . "#CC6791")
+    (magenta-2bg . "#4C2942")
+    (magenta-2fg . "#C47896")
+    (magenta-d   . "#A00559")
+    (magenta-l   . "#FF699E")
+    (violet-1bg  . "#0C3144")
+    (violet-1fg  . "#8085C0")
+    (violet-2bg  . "#1A365A")
+    (violet-2fg  . "#888DBC")
+    (violet-d    . "#243E9B")
+    (violet-l    . "#8D85E7")
+    (blue-1bg    . "#003547")
+    (blue-1fg    . "#5C93C5")
+    (blue-2bg    . "#003F5E")
+    (blue-2fg    . "#709BC3")
+    (blue-d      . "#0061A8")
+    (blue-l      . "#74ADF5")
+    (cyan-1bg    . "#013841")
+    (cyan-1fg    . "#54A099")
+    (cyan-2bg    . "#00464A")
+    (cyan-2fg    . "#6BA8A2")
+    (cyan-d      . "#007D76")
+    (cyan-l      . "#6CCEC0")
+    (green-1bg   . "#1D3732")
+    (green-1fg   . "#8C9A43")
+    (green-2bg   . "#2F4321")
+    (green-2fg   . "#97A35F")
+    (green-d     . "#5B7300")
+    (green-l     . "#B3C34D")
+    ;; palette end
+    )
+  "The solarized color palette alist.")
+(defvar solarized-dark-color-palette-alist
+  '(;; solarized-dark palette
+    (base03      . "#002b36")
+    (base02      . "#073642")
+    (base01      . "#586E75")
+    (base00      . "#657B83")
+    (base0       . "#839496")
+    (base1       . "#93A1A1")
+    (base2       . "#EEE8D5")
+    (base3       . "#FDF6E3")
+    (yellow      . "#B58900")
+    (orange      . "#CB4B16")
+    (red         . "#DC322F")
+    (magenta     . "#D33682")
+    (violet      . "#6C71C4")
+    (blue        . "#268BD2")
+    (cyan        . "#2AA198")
+    (green       . "#859900")
+    (yellow-1bg  . "#273532")
+    (yellow-1fg  . "#AF8F41")
+    (yellow-2bg  . "#433E20")
+    (yellow-2fg  . "#B39A5E")
+    (yellow-d    . "#866300")
+    (yellow-l    . "#E1AF4B")
+    (orange-1bg  . "#2B2D2E")
+    (orange-1fg  . "#CA6F48")
+    (orange-2bg  . "#4D2C1F")
+    (orange-2fg  . "#C47C5D")
+    (orange-d    . "#992700")
+    (orange-l    . "#FB7640")
+    (red-1bg     . "#2D2C31")
+    (red-1fg     . "#D66556")
+    (red-2bg     . "#532725")
+    (red-2fg     . "#CE7667")
+    (red-d       . "#A7020A")
+    (red-l       . "#FF6849")
+    (magenta-1bg . "#272D3C")
+    (magenta-1fg . "#CC6791")
+    (magenta-2bg . "#4C2942")
+    (magenta-2fg . "#C47896")
+    (magenta-d   . "#A00559")
+    (magenta-l   . "#FF699E")
+    (violet-1bg  . "#0C3144")
+    (violet-1fg  . "#8085C0")
+    (violet-2bg  . "#1A365A")
+    (violet-2fg  . "#888DBC")
+    (violet-d    . "#243E9B")
+    (violet-l    . "#8D85E7")
+    (blue-1bg    . "#003547")
+    (blue-1fg    . "#5C93C5")
+    (blue-2bg    . "#003F5E")
+    (blue-2fg    . "#709BC3")
+    (blue-d      . "#0061A8")
+    (blue-l      . "#74ADF5")
+    (cyan-1bg    . "#013841")
+    (cyan-1fg    . "#54A099")
+    (cyan-2bg    . "#00464A")
+    (cyan-2fg    . "#6BA8A2")
+    (cyan-d      . "#007D76")
+    (cyan-l      . "#6CCEC0")
+    (green-1bg   . "#1D3732")
+    (green-1fg   . "#8C9A43")
+    (green-2bg   . "#2F4321")
+    (green-2fg   . "#97A35F")
+    (green-d     . "#5B7300")
+    (green-l     . "#B3C34D")
+    ;; palette end
+    )
+  "The solarized color palette alist.")
+
+
+;; Color Palette
+
+;;;###autoload
+(require 'cl-lib)
+(require 'color)
+
+
+(defun solarized-color-clamp-lab (lab)
+  "Restricts a LAB colorspace color if it is out of bounds."
+  (list (min (max (nth 0 lab) 0.0) 100.0)
+        (min (max (nth 1 lab) -128) 127)
+        (min (max (nth 2 lab) -128) 127)))
+
+(defun solarized-color-rgb-to-hex (red green blue &optional digits-per-component round)
+  "Return hexadecimal #RGB notation for the color specified by RED GREEN BLUE.
+RED, GREEN, and BLUE should be numbers between 0.0 and 1.0, inclusive.
+Optional argument DIGITS-PER-COMPONENT can be either 4 (the default)
+or 2; use the latter if you need a 24-bit specification of a color.
+Optional argument ROUND rounds values which probably is what you usually want."
+  (or digits-per-component (setq digits-per-component 4))
+  (let* ((maxval (if (= digits-per-component 2) 255 65535))
+         (fmt (if (= digits-per-component 2) "#%02x%02x%02x" "#%04x%04x%04x")))
+    (if round
+        (format fmt (+ 0.5 (* red maxval)) (+ 0.5 (* green maxval)) (+ 0.5(* blue maxval)))
+        (format fmt (* red maxval) (* green maxval) (* blue maxval)))))
+
+(defmacro solarized-with-color-variables (variant theme-name color-palette &optional childtheme-sexp)
+  "Eval `solarized-definition' in solarized COLOR-PALETTE for THEME-NAME.
+VARIANT is 'dark or 'light.
+When optional argument CHILDTHEME-SEXP sexp is supplied it's invoked to further
+customize the resulting theme."
+  (declare (indent defun))
+  (let ((color-palette* (eval color-palette)))
+    `(let* ((class '((class color) (min-colors 89)))
+            (light-class (append '((background light)) class))
+            (dark-class (append '((background dark)) class))
+            (theme-name ,theme-name)
+            (variant ,variant)
+            ,@(mapcar (lambda (elm) `(,(car elm) ,(cdr elm))) color-palette*)
+
+            (s-base03 base03)
+            (s-base02 base02)
+            (s-base01 base01)
+            (s-base00 base00)
+            (s-base3 base3)
+            (s-base2 base2)
+            (s-base1 base1)
+            (s-base0 base0)
+
+            ;; Solarized palette names, use these instead of -fg -bg...
+            (base03 (if (eq variant 'light) s-base3 s-base03))
+            (base02 (if (eq variant 'light) s-base2 s-base02))
+            (base01 (if (eq variant 'light) s-base1 s-base01))
+            (base00 (if (eq variant 'light) s-base0 s-base00))
+            (base0 (if (eq variant 'light) s-base00 s-base0))
+            (base1 (if (eq variant 'light) s-base01 s-base1))
+            (base2 (if (eq variant 'light) s-base02 s-base2))
+            (base3 (if (eq variant 'light) s-base03 s-base3))
+
+            ;; Line drawing color
+            ;;
+            ;; NOTE only use this for very thin lines that are hard to see using base02, in low
+            ;; color displayes base02 might be used instead
+            (s-line (if (eq variant 'light) "#cccec4" "#284b54"))
+
+            ;; Light/Dark adaptive higher/lower contrast accented colors
+            ;;
+            ;; NOTE Only use these in exceptional cirmumstances!
+            (yellow-hc (if (eq variant 'light) yellow-d yellow-l))
+            (yellow-lc (if (eq variant 'light) yellow-l yellow-d))
+            (orange-hc (if (eq variant 'light) orange-d orange-l))
+            (orange-lc (if (eq variant 'light) orange-l orange-d))
+            (red-hc (if (eq variant 'light) red-d red-l))
+            (red-lc (if (eq variant 'light) red-l red-d))
+            (magenta-hc (if (eq variant 'light) magenta-d magenta-l))
+            (magenta-lc (if (eq variant 'light) magenta-l magenta-d))
+            (violet-hc (if (eq variant 'light) violet-d violet-l))
+            (violet-lc (if (eq variant 'light) violet-l violet-d))
+            (blue-hc (if (eq variant 'light) blue-d blue-l))
+            (blue-lc (if (eq variant 'light) blue-l blue-d))
+            (cyan-hc (if (eq variant 'light) cyan-d cyan-l))
+            (cyan-lc (if (eq variant 'light) cyan-l cyan-d))
+            (green-hc (if (eq variant 'light) green-d green-l))
+            (green-lc (if (eq variant 'light) green-l green-d))
+
+            ;; customize based face properties
+            (s-maybe-bold (if solarized-use-less-bold
+                              'unspecified 'bold))
+            (s-maybe-italic (if solarized-use-more-italic
+                                'italic 'normal))
+            (s-variable-pitch (if solarized-use-variable-pitch
+                                  'variable-pitch 'default))
+            (s-fringe-bg (if solarized-distinct-fringe-background
+                             base02 base03))
+            (s-fringe-fg base01)
+
+            (s-header-line-fg (if solarized-high-contrast-mode-line
+                                  base1 base0))
+            (s-header-line-bg (if solarized-high-contrast-mode-line
+                                  base02 base03))
+            (s-header-line-underline (if solarized-high-contrast-mode-line
+                                         nil base02))
+
+            (s-mode-line-fg (if solarized-high-contrast-mode-line
+                                base03 base0))
+            (s-mode-line-bg (if solarized-high-contrast-mode-line
+                                base0 base02))
+            (s-mode-line-underline (if solarized-high-contrast-mode-line
+                                       nil s-line))
+
+            (s-mode-line-buffer-id-fg (if solarized-high-contrast-mode-line
+                                          'unspecified base1))
+            (s-mode-line-inactive-fg (if solarized-high-contrast-mode-line
+                                         base0 base01))
+            (s-mode-line-inactive-bg (if solarized-high-contrast-mode-line
+                                         base02 base03))
+            (s-mode-line-inactive-bc (if solarized-high-contrast-mode-line
+                                         base02 base02))
+
+            ;; diff colors
+            (s-diff-A-bg red-1bg)
+            (s-diff-A-fg red-1fg)
+            (s-diff-fine-A-bg red-2bg)
+            (s-diff-fine-A-fg red-2fg)
+
+            (s-diff-B-bg green-1bg)
+            (s-diff-B-fg green-1fg)
+            (s-diff-fine-B-bg green-2bg)
+            (s-diff-fine-B-fg green-2fg)
+
+            (s-diff-Ancestor-bg yellow-1bg)
+            (s-diff-Ancestor-fg yellow-1fg)
+            (s-diff-fine-Ancestor-bg yellow-2bg)
+            (s-diff-fine-Ancestor-fg yellow-2fg)
+
+            (s-diff-C-bg blue-1bg)
+            (s-diff-C-fg blue-1fg)
+            (s-diff-fine-C-bg blue-2bg)
+            (s-diff-fine-C-fg blue-2fg)
+            (s-diff-context-fg base0)
+            (s-diff-heading-bg base02)
+
+            (s-diffstat-added-fg green)
+            (s-diffstat-changed-fg blue)
+            (s-diffstat-removed-fg red))
+
+       ;; NOTE: `custom--inhibit-theme-enable' turn-off needed
+       ;;       childtheme works well disscussed in #352
+       (let ((custom--inhibit-theme-enable nil))
+         ,@solarized-definition
+         ,@(eval childtheme-sexp)))))
+
+
+
 
 (defvar solarized-definition
-;;; Color palette
   '(
-;;; Theme Faces
     (custom-theme-set-faces
      theme-name
 ;;;; Built-in
@@ -59,7 +440,7 @@
      `(mode-line
        ((,class (:inverse-video unspecified
                                 :overline ,s-mode-line-bg
-                                :underline ,s-mode-line-underline
+                                ;; :underline ,s-mode-line-underline
                                 :foreground ,s-mode-line-fg
                                 :background ,s-mode-line-bg
                                 :box (:line-width 1 :color ,s-mode-line-bg
@@ -68,7 +449,7 @@
      `(mode-line-inactive
        ((,class (:inverse-video unspecified
                                 :overline ,s-mode-line-inactive-bc
-                                :underline ,s-mode-line-underline
+                                ;; :underline ,s-mode-line-underline
                                 :foreground ,s-mode-line-inactive-fg
                                 :background ,s-mode-line-inactive-bg
                                 :box (:line-width 1 :color ,s-mode-line-inactive-bg
@@ -209,8 +590,8 @@
 
 ;;;;; pulse
      `(pulse-highlight-start-face ((,light-class
-                                    (:background ,(solarized-color-blend yellow base03 0.4)))
-                                   (,dark-class (:background ,(solarized-color-blend cyan base03 0.4)))))
+                                    (:background , base03))
+                                   (,dark-class (:background , base03))))
 ;;;;; wid-edit
      `(widget-field ((,class (:background ,base02))))
 ;;;;; font lock
@@ -774,15 +1155,15 @@
      `(go-guru-hl-identifier-face ((,class (:foreground ,magenta))))
 ;;;;; go-mode
      `(go-coverage-0 ((,class (:foreground ,orange))))
-     `(go-coverage-1 ((,class (:foreground ,(solarized-color-blend blue yellow (/ 2.0 6))))))
-     `(go-coverage-2 ((,class (:foreground ,(solarized-color-blend blue yellow (/ 3.0 6))))))
-     `(go-coverage-3 ((,class (:foreground ,(solarized-color-blend blue yellow (/ 4.0 6))))))
-     `(go-coverage-4 ((,class (:foreground ,(solarized-color-blend blue yellow (/ 5.0 6))))))
+     `(go-coverage-1 ((,class (:foreground ,yellow))))
+     `(go-coverage-2 ((,class (:foreground ,yellow))))
+     `(go-coverage-3 ((,class (:foreground ,yellow))))
+     `(go-coverage-4 ((,class (:foreground ,yellow))))
      `(go-coverage-5 ((,class (:foreground ,blue))))
-     `(go-coverage-6 ((,class (:foreground ,(solarized-color-blend cyan blue (/ 2.0 6))))))
-     `(go-coverage-7 ((,class (:foreground ,(solarized-color-blend cyan blue (/ 3.0 6))))))
-     `(go-coverage-8 ((,class (:foreground ,(solarized-color-blend cyan blue (/ 4.0 6))))))
-     `(go-coverage-9 ((,class (:foreground ,(solarized-color-blend cyan blue (/ 5.0 6))))))
+     `(go-coverage-6 ((,class (:foreground ,blue))))
+     `(go-coverage-7 ((,class (:foreground ,blue))))
+     `(go-coverage-8 ((,class (:foreground ,blue))))
+     `(go-coverage-9 ((,class (:foreground ,blue))))
      `(go-coverage-10 ((,class (:foreground ,cyan))))
      `(go-coverage-covered ((,class (:foreground ,green))))
      `(go-coverage-untracked ((,class (:foreground ,base01))))
@@ -851,26 +1232,25 @@
      `(helm-swoop-target-line-block-face ((,class (:foreground unspecified :background ,base02))))
      `(helm-swoop-target-word-face ((,class (:foreground ,magenta :background unspecified))))
 ;;;;; hi-lock-mode
-     `(hi-yellow ((,class (:foreground ,(solarized-color-blend yellow base1 0.5)
-                                       :background,(solarized-color-blend yellow base03 0.15)))))
-     `(hi-pink ((,class (:foreground ,(solarized-color-blend magenta base1 0.5)
-                                     :background,(solarized-color-blend magenta base03 0.15)))))
-     `(hi-green ((,class (:foreground ,(solarized-color-blend green base1 0.5)
-                                      :background,(solarized-color-blend green base03 0.15)))))
-     `(hi-blue ((,class (:foreground ,(solarized-color-blend blue base1 0.5)
-                                     :background,(solarized-color-blend blue base03 0.15)))))
+     `(hi-yellow ((,class (:foreground ,base1 :background,base03))))
+     `(hi-pink ((,class (:foreground ,base1
+                                     :background,base03))))
+     `(hi-green ((,class (:foreground ,base1
+                                      :background,base03))))
+     `(hi-blue ((,class (:foreground ,base1
+                                     :background,base03))))
      `(hi-black-b ((,class (:foreground ,base1
                                         :background ,base03
                                         :weight bold))))
      `(hi-blue-b ((,class (:weight bold
-                                   :foreground ,(solarized-color-blend cyan base1 0.7)
-                                   :background ,(solarized-color-blend cyan base03 0.2)))))
+                                   :foreground ,base1
+                                   :background ,base03))))
      `(hi-green-b ((,class (:weight bold
-                                    :foreground ,(solarized-color-blend green base1 0.7)
-                                    :background ,(solarized-color-blend green base03 0.2)))))
+                                    :foreground ,base1
+                                    :background ,base03))))
      `(hi-red-b ((,class (:weight bold
-                                  :foreground ,(solarized-color-blend red base1 0.7)
-                                  :background ,(solarized-color-blend red base03 0.2)))))
+                                  :foreground ,base1
+                                  :background ,base03))))
      `(hi-black-hb ((,class (:weight bold
                                      :foreground ,base1
                                      :background ,base02))))
@@ -1033,7 +1413,7 @@
      `(linum ((,class (:weight thin :underline nil :foreground ,s-fringe-fg :background ,s-fringe-bg))))
      `(linum-relative-current-face ((,class (:inherit linum))))
 ;;;;; display-line-number-mode
-     `(line-number ((,class (:weight thin :underline nil :foreground ,s-fringe-fg :background ,s-fringe-bg))))
+     `(line-number ((,class (:weight thin :underline nil :foreground ,s-fringe-fg :background ,s-fringe-bg :slant italic))))
      `(line-number-minor-tick ((,class (:inherit line-number :weight normal))))
      `(line-number-major-tick ((,class (:inherit line-number-minor-tick :weight bold))))
      `(line-number-current-line ((,class (:inherit line-number :background ,base03 :foreground ,base0))))
@@ -1077,7 +1457,7 @@
             :foreground ,yellow-2fg))))
      `(magit-diff-hunk-heading-selection
        ((t (,@(and (>= emacs-major-version 27) '(:extend t))
-            :background ,(solarized-color-blend yellow base02 0.1)
+            :background ,base02
             :foreground ,orange
             :weight bold))))
      `(magit-diff-lines-heading
@@ -1321,10 +1701,10 @@
      `(nav-face-hfile ((,class (:foreground ,red))))
 ;;;;; nav-flash
      ;; `(nav-flash-face ((,class (:background ,base02))))
-     `(nav-flash-face ((,light-class (:foreground ,(solarized-color-blend yellow base1 0.2)
-                                                  :background ,(solarized-color-blend yellow base03 0.2)))
-                       (,dark-class (:foreground ,(solarized-color-blend cyan base1 0.1)
-                                                 :background ,(solarized-color-blend cyan base03 0.3)))))
+     `(nav-flash-face ((,light-class (:foreground ,base1
+                                                  :background ,base03))
+                       (,dark-class (:foreground ,base1
+                                                 :background ,base03))))
 ;;;;; navi2ch
      `(navi2ch-list-category-face ((,class (:foreground ,blue ))))
      `(navi2ch-list-add-board-name-face ((,class (:foreground ,yellow))))
@@ -1507,7 +1887,7 @@
      `(outline-minor-1
        ((,class (,@(and (>= emacs-major-version 27) '(:extend t))
                  :inherit (outline-minor-0 outline-1)
-                 :background ,(solarized-color-blend base03 yellow .9)))))
+                 :background ,yellow))))
 ;;;;; paren-face
      `(paren-face  ((,class (:foreground ,base01))))
 ;;;;; perspective
@@ -1622,11 +2002,11 @@
      `(sml/charging ((,class (:foreground ,base1))))
      `(sml/discharging ((,class (:foreground ,base1 :weight bold))))
 ;;;;; solaire
-     `(solaire-default-face ((,class (:inherit default :background ,(solarized-color-blend base02 base03 0.5)))))
-     `(solaire-minibuffer-face ((,class (:inherit default :background ,(solarized-color-blend base02 base03 0.5)))))
-     `(solaire-line-number-face ((,class (:inherit (line-number solaire-default-face) :background ,(solarized-color-blend base02 base03 0.5)))))
-     `(solaire-hl-line-face ((,class (:inherit hl-line :background ,(solarized-color-blend base02 base03 0.95)))))
-     `(solaire-org-hide-face ((,class (:inherit org-hide :background ,(solarized-color-blend base02 base03 0.5)))))
+     `(solaire-default-face ((,class (:inherit default :background ,base03))))
+     `(solaire-minibuffer-face ((,class (:inherit default :background ,base03))))
+     `(solaire-line-number-face ((,class (:inherit (line-number solaire-default-face) :background ,base03))))
+     `(solaire-hl-line-face ((,class (:inherit hl-line :background ,base03))))
+     `(solaire-org-hide-face ((,class (:inherit org-hide :background ,base03))))
      `(solaire-mode-line-face ((,class (:inherit default :background ,s-mode-line-bg))))
      `(solaire-mode-line-inactive-face ((,class (:inherit default :background ,s-mode-line-inactive-bg))))
 ;;;;; smartparens
@@ -1826,9 +2206,9 @@
                                                       :background ,red
                                                       :weight bold))))
      `(transient-nonstandard-key
-       ((t (:underline nil :background ,(solarized-color-blend yellow-l s-base3 0.2)))))
+       ((t (:underline nil :background ,s-base3))))
      `(transient-mismatched-key
-       ((t (:underline nil :background ,(solarized-color-blend red-l s-base3 0.2)))))
+       ((t (:underline nil :background ,s-base3))))
      `(transient-separator           ((t (,@(and (>= emacs-major-version 27) '(:extend t))
                                           :background ,s-line))))
 ;;;;; tuareg
@@ -2062,7 +2442,7 @@
      `(highlight-symbol-foreground-color ,base1)
      `(highlight-symbol-colors
        '(,@(mapcar
-            (lambda (color) (solarized-color-blend color base03 0.25))
+            (lambda (color) base03)
             `(,yellow ,cyan ,red ,violet ,green ,orange ,blue))))
 ;;;;; highlight-tail
      `(highlight-tail-colors
@@ -2079,7 +2459,7 @@
      `(pos-tip-foreground-color ,base1)
      `(pos-tip-background-color ,base02)
 ;;;;; smartrep
-     `(smartrep-mode-line-active-bg (solarized-color-blend ,green ,s-mode-line-bg 0.2))
+     `(smartrep-mode-line-active-bg s-mode-line-bg)
 ;;;;; term
      `(term-default-fg-color ,base0) ;; @deprecated24.3
      `(term-default-bg-color ,base03) ;; @deprecated24.3
@@ -2087,22 +2467,22 @@
      `(vc-annotate-background-mode nil)
      `(vc-annotate-color-map
        '((20 . ,red)
-         (40 . ,(solarized-color-blend yellow red (/ 2.0 4)))
-         (60 . ,(solarized-color-blend yellow red (/ 3.0 4)))
+         (40 . ,red)
+         (60 . ,red)
          (80 . ,yellow)
-         (100 . ,(solarized-color-blend green yellow (/ 2.0 6)))
-         (120 . ,(solarized-color-blend green yellow (/ 3.0 6)))
-         (140 . ,(solarized-color-blend green yellow (/ 4.0 6)))
-         (160 . ,(solarized-color-blend green yellow (/ 5.0 6)))
+         (100 . ,yellow)
+         (120 . ,yellow)
+         (140 . ,yellow)
+         (160 . ,yellow)
          (180 . ,green)
-         (200 . ,(solarized-color-blend cyan green (/ 2.0 6)))
-         (220 . ,(solarized-color-blend cyan green (/ 3.0 6)))
-         (240 . ,(solarized-color-blend cyan green (/ 4.0 6)))
-         (260 . ,(solarized-color-blend cyan green (/ 5.0 6)))
+         (200 . ,green)
+         (220 . ,green)
+         (240 . ,green)
+         (260 . ,green)
          (280 . ,cyan)
-         (300 . ,(solarized-color-blend blue cyan (/ 2.0 5)))
-         (320 . ,(solarized-color-blend blue cyan (/ 3.0 5)))
-         (340 . ,(solarized-color-blend blue cyan (/ 4.0 5)))
+         (300 . ,cyan)
+         (320 . ,cyan)
+         (340 . ,cyan)
          (360 . ,blue)))
      `(vc-annotate-very-old-color nil)
      `(vc-annotate-background nil)
@@ -2122,10 +2502,12 @@
      `(xterm-color-names-bright [,base03 ,orange ,base01 ,base00
                                          ,base0 ,violet ,base1 ,base3]))))
 
-(provide 'solarized-faces)
 
-;; Local Variables:
-;; indent-tabs-mode: nil
-;; End:
 
-;;; solarized-faces.el ends here
+
+(solarized-with-color-variables 'dark 'solarized-dark
+  solarized-dark-color-palette-alist)
+
+(provide-theme 'solarized-dark)
+
+(provide 'solarized-dark-theme)

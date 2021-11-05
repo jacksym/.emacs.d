@@ -39,3 +39,7 @@ cd eshell
 ls
 cd history
 ls
+ls
+apt moo
+cd 
+ls

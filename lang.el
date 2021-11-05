@@ -82,6 +82,8 @@
 (setq LaTeX-item-indent 0)
 (setq latex-run-command "pdflatex")
 
+(defun my-compile-latex () (interactive)
+       )
 ;; (setq lsp-ui-doc-enable nil)
 ;; (setq lsp-ui-doc-position 'bottom)
 ;; (setq lsp-ui-doc-show-with-mouse t)

@@ -32,22 +32,19 @@
 (evil-define-key 'normal 'global (kbd "<leader> q") 'delete-window)
 (evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
 (evil-define-key 'normal 'global (kbd "<leader> b") 'ivy-switch-buffer)
-(evil-define-key 'normal 'global (kbd "<leader> n l") 'split-window-right)
-(evil-define-key 'normal 'global (kbd "<leader> n j") 'split-window-below)
-(evil-define-key 'normal 'global (kbd "<leader> d") 'dired)
+(evil-define-key 'normal 'global (kbd "<leader> w l") 'split-window-right)
+(evil-define-key 'normal 'global (kbd "<leader> w j") 'split-window-below)
+(evil-define-key 'normal 'global (kbd "<leader> w o") 'delete-other-windows)
+;; (evil-define-key 'normal 'global (kbd "<leader> d") 'dired)
 
 (defun my-term () (interactive) (term "/bin/bash"))
 (evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
-;; (evil-define-key 'normal 'global (kbd "<leader> s") '(term "/bin/bash"))
 
-(defun kill-and-close ()
-  (interactive)
-  (kill-buffer)
-  (delete-window))
-
+(defun kill-and-close () (interactive) (kill-buffer) (delete-window))
 (evil-define-key 'normal 'global (kbd "<leader> Q") 'kill-and-close)
 
 
 (add-hook 'python-mode-hook (lambda ()
 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
 	))
+
