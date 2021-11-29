@@ -16,35 +16,34 @@
   (kbd "<leader> L") 'evil-window-move-far-right
   )
 
-(global-set-key (kbd "M-B") 'windmove-left)
-(global-set-key (kbd "M-N") 'windmove-down)
-(global-set-key (kbd "M-P") 'windmove-up)
-(global-set-key (kbd "M-F") 'windmove-right)
-(global-set-key (kbd "C-x M-B") 'evil-window-move-far-left)
-(global-set-key (kbd "C-x M-N") 'evil-window-move-very-bottom)
-(global-set-key (kbd "C-x M-P") 'evil-window-move-very-top)
-(global-set-key (kbd "C-x M-F") 'evil-window-move-far-right)
-
-(evil-define-key 'normal 'global (kbd "<leader> /") 'comment-line)
-(evil-define-key 'visual 'global (kbd "<leader> /") 'comment-region)
 
 
-(evil-define-key 'normal 'global (kbd "<leader> q") 'delete-window)
-(evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
-(evil-define-key 'normal 'global (kbd "<leader> b") 'ivy-switch-buffer)
-(evil-define-key 'normal 'global (kbd "<leader> w l") 'split-window-right)
-(evil-define-key 'normal 'global (kbd "<leader> w j") 'split-window-below)
+(evil-define-key 'normal 'global (kbd "<leader> w c") 'delete-window)
+(evil-define-key 'normal 'global (kbd "<leader> w v") 'split-window-right)
+(evil-define-key 'normal 'global (kbd "<leader> w h") 'split-window-below)
 (evil-define-key 'normal 'global (kbd "<leader> w o") 'delete-other-windows)
-;; (evil-define-key 'normal 'global (kbd "<leader> d") 'dired)
-
-(defun my-term () (interactive) (term "/bin/bash"))
-(evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
 
 (defun kill-and-close () (interactive) (kill-buffer) (delete-window))
 (evil-define-key 'normal 'global (kbd "<leader> Q") 'kill-and-close)
 
 
+(evil-define-key 'normal 'global (kbd "<leader> ;") 'comment-line)
+(evil-define-key 'visual 'global (kbd "<leader> /") 'comment-region)
+
+(evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
+(evil-define-key 'normal 'global (kbd "<leader> b") 'ivy-switch-buffer)
+;; (evil-define-key 'normal 'global (kbd "<leader> d") 'dired)
+
+(defun my-term () (interactive) (term "/bin/bash"))
+(evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
+
+
+
 (add-hook 'python-mode-hook (lambda ()
 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
+	))
+
+(add-hook 'tex-mode-hook (lambda ()
+	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-compile-latex)
 	))
 

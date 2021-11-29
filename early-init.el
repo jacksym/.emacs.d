@@ -13,6 +13,7 @@
 ;; (load-theme 'dracula t)
 ;; (load-theme 'monokai t)
 ;; (load-theme 'spolsky t)
+;; (load-theme 'srcery t)
 ;; (load-theme 'autumn-light t)
 
 ;; (set-frame-font "Monego-12")

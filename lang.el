@@ -11,6 +11,14 @@
 	  (electric-pair-local-mode t)
 	  ))
 
+;; LISP
+(add-hook 'lisp-mode-hook (lambda ()
+	  (display-line-numbers-mode t)
+	  (visual-line-mode nil)
+	  (toggle-truncate-lines)
+	  (hl-line-mode t)
+	  (electric-pair-local-mode t)
+	  ))
 
 ;; C
 (add-hook 'c-mode-hook (lambda ()
@@ -51,27 +59,6 @@
 
 ;; (add-hook 'python-mode-hook #'lsp)
 
-(defun my-python-shell-restart ()
-;; Kill process to solve the reload modules problem.
-  (interactive)
-  (when (get-buffer-process "*Python*")
-     (set-process-query-on-exit-flag (get-buffer-process "*Python*") nil)
-     (kill-process (get-buffer-process "*Python*"))
-     ;; If you want to clean the buffer too.
-     ;;(kill-buffer "*Python*")
-     ;; Not so fast!
-     (sleep-for 0.1))
-  (run-python)
-  (other-window -1)
-  ;; Pop new window only if shell isnt visible
-  ;; in any frame.
-  (unless (get-buffer-window "*Python*" t) 
-    (python-shell-switch-to-shell)))
-
-(eval-after-load "python"
-  '(progn
-     (define-key python-mode-map (kbd "C-c C-k") 'my-python-shell-restart)
-))
 
 
 
@@ -83,7 +70,12 @@
 (setq latex-run-command "pdflatex")
 
 (defun my-compile-latex () (interactive)
+       (save-buffer)
+       (save-window-excursion (tex-file))
        )
+
+
+
 ;; (setq lsp-ui-doc-enable nil)
 ;; (setq lsp-ui-doc-position 'bottom)
 ;; (setq lsp-ui-doc-show-with-mouse t)
