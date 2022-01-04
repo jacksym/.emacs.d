@@ -9,12 +9,15 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (load-theme 'afternoon t)
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
 ;; (load-theme 'dracula t)
 ;; (load-theme 'monokai t)
 ;; (load-theme 'spolsky t)
 ;; (load-theme 'srcery t)
 ;; (load-theme 'autumn-light t)
+(load-theme 'after-black t)
+;; (load-theme 'base16-greenscreen t)
+
 
 ;; (set-frame-font "Monego-12")
 

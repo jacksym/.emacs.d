@@ -1,38 +1,3 @@
-ls
-cd .emacs.d
-ls
-cd elpa
-ls
-cd .emacs.d
-ls
-cd themes
-ls
-rm solarized*
-ls
-cd .emacs.d
-ls
-cd themes
-ls
-mv color-theme-solarized.el solarized-theme.el
-cd ..
-ls
-rm session.106917738e8e2c562116141024701234000000065930065
-ls
-rm #init.el#
-rm init.el~
-ls
-cd url
-ls
-cd cache
-ls
-cd jack
-ls
-cd http
-ls
-cd com
-ls
-cd goog
-cd ~/.emacs.d
 rm -r url
 ls
 cd eshell
@@ -42,4 +7,122 @@ ls
 ls
 apt moo
 cd 
+ls
+ls
+rm #start.cpp#
+ls
+rm -rf #start.cpp#
+ls
+cat CMakeLists.txt
+apt moo
+cd build
+ls
+make
+./Leo
+./Leo
+./Leo
+(+ 1 2)
+ls
+ls -al
+cd build
+ls
+./Leo
+ls
+cd /etc
+ls
+cd 
+ls
+cd Downloads/
+ls
+rm -rf exotica-theme
+ls
+cd build
+./Leo
+cd build
+ls
+./Leo
+ls
+cd ~/leo
+ls
+cd build
+ls
+./Leo
+apt moo
+cmatrix
+cd ~/leo/build
+ls
+./Leo
+apt moo
+apt show python3
+ls
+ls
+clear
+clear
+ls
+ls
+ls
+ls
+./Leo
+./Leo
+ls
+clear
+clear
+clear
+clear
+apt moo
+ls
+cat Makefile
+mkdir leoc
+cd leoc
+mkdir build
+cp ~/leo/CMakeLists.txt ./
+ls
+cp ~/leo/start.cpp ./
+cd build
+cmake ../
+make
+./leoc
+cd build
+cmake ../
+cmake ../
+make
+cd school
+ls
+cp -r resume ~/
+ls
+ls
+rm #start.cpp#
+ls
+ls
+mkdir lib
+cd ~/Down
+ls
+cd ~/Downloads/
+ls
+git clone https://github.com/glfw/glfw.git
+cp -r glfw ~/leoc/lib
+ls
+git clone https://github.com/nigels-com/glew.git glew
+ls
+cp -r glew ~/leoc/lib
+cd ~/leoc/build
+cmake ../
+cmake ../
+make
+cmake ../
+cmake ../
+cmake ../
+cmake ../
+make
+cd build
+cmake ../
+make
+./leoc
+ls
+cd walls
+ls
+ls
+mkdir june_trip
+mv calc.py june_trip/calc.py
+cd june_trip/
 ls

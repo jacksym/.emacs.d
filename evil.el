@@ -1,10 +1,11 @@
-; Jack Symonds Evil Configuration
+;; Jack Symonds Evil Configuration
 
-(evil-mode t)
+(evil-mode -1)
 
 ;; (evil-set-undo-system 'undo-tree)
 
 (evil-set-leader 'normal (kbd "SPC"))
+
 (evil-define-key 'normal 'global
   (kbd "<leader> h") 'windmove-left
   (kbd "<leader> j") 'windmove-down
@@ -34,16 +35,14 @@
 (evil-define-key 'normal 'global (kbd "<leader> b") 'ivy-switch-buffer)
 ;; (evil-define-key 'normal 'global (kbd "<leader> d") 'dired)
 
-(defun my-term () (interactive) (term "/bin/bash"))
 (evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
 
 
+;; (add-hook 'python-mode-hook (lambda ()
+;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
+;; 	))
 
-(add-hook 'python-mode-hook (lambda ()
-	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
-	))
-
-(add-hook 'tex-mode-hook (lambda ()
-	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-compile-latex)
-	))
+;; (add-hook 'tex-mode-hook (lambda ()
+;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-compile-latex)
+;; 	))
 
