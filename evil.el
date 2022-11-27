@@ -1,5 +1,6 @@
 ;; Jack Symonds Evil Configuration
 
+;; (setq evil-want-keybinding nil)
 (evil-mode -1)
 
 ;; (evil-set-undo-system 'undo-tree)
@@ -24,19 +25,25 @@
 (evil-define-key 'normal 'global (kbd "<leader> w h") 'split-window-below)
 (evil-define-key 'normal 'global (kbd "<leader> w o") 'delete-other-windows)
 
-(defun kill-and-close () (interactive) (kill-buffer) (delete-window))
-(evil-define-key 'normal 'global (kbd "<leader> Q") 'kill-and-close)
+;; (defun kill-and-close () (interactive) (kill-buffer) (delete-window))
+;; (evil-define-key 'normal 'global (kbd "<leader> Q") 'kill-and-close)
 
 
 (evil-define-key 'normal 'global (kbd "<leader> ;") 'comment-line)
-(evil-define-key 'visual 'global (kbd "<leader> /") 'comment-region)
+;; (evil-define-key 'visual 'global (kbd "<leader> ;") 'comment-region)
 
+
+(evil-define-key 'normal 'global (kbd "<leader> W") 'save-buffer)
 (evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
 (evil-define-key 'normal 'global (kbd "<leader> b") 'ivy-switch-buffer)
-;; (evil-define-key 'normal 'global (kbd "<leader> d") 'dired)
+
+(evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
 
 (evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
 
+
+
+;; (evil-collection-init)
 
 ;; (add-hook 'python-mode-hook (lambda ()
 ;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)

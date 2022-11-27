@@ -1,6 +1,11 @@
 ;; Languages Init Configuration
 ;; Jack Symonds
 
+(add-hook 'dired-mode-hook (lambda ()
+                             (hl-line-mode t)
+                             ;; (local-set-key [mouse-1] 'dired-find-file)
+                             ))
+
 
 ;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook (lambda ()
@@ -36,6 +41,37 @@
 ;; (add-hook 'c++-mode-hook (lambda ()
     ;; (company-mode)
     ;; ))
+
+
+
+
+;; one-button-compile
+;; get path of current C++ file
+;; !shell-exists open shell in window below
+;; if shell exists but not open, open shell in window below
+;; got to shell buffer
+;; check if current directory is 'path'/../build
+;; if not do nothing
+
+
+
+(defun jack-one-compile ()
+(if (get-buffer "*eshell*")
+(message "get buffer works; this buffer is %s" (buffer-name))
+)
+)
+
+
+;;SQL
+(setq sql-mysql-login-params
+      '((user :default "mysql")
+      (database :default "mysql")
+      (server :default "localhost")
+      (port :default 3306))
+)
+(add-hook 'sql-mode (lambda ()
+                      (company-mode)
+                      ))
 
 ;; PYTHON
 (add-hook 'python-mode-hook (lambda ()
@@ -73,6 +109,12 @@
        (save-window-excursion (tex-file))
        )
 
+;; PDF
+;; (add-hook 'pdf-view-hook
+(add-hook 'doc-view-hook
+;; 'doc-view-fit-width-to-window
+'doc-view-fit-page-to-window
+)
 
 
 (setq lsp-ui-doc-enable nil)

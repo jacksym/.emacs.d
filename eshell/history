@@ -1,128 +1,128 @@
-rm -r url
+g++ ../hello.cpp hello
+g++ ../hello.cpp
 ls
-cd eshell
+./a.out
+g++ ../hello.cpp
+./a.out
 ls
-cd history
+rm #note.txt#
+ls
+rm -f #note.txt#
 ls
 ls
-apt moo
-cd 
+ls -l
+cd Desktop/
 ls
+mkdir pdfmod
+mv sun_goes_down_mod.pdf pdfmod/
+mv SUN_GOES_DOWN__Lil_Nas_X.pdf pdfmod/
+mv sun_goes_down_mod.svg pdfmod/
+rm sun_goes_down_modified.xcf
 ls
-rm #start.cpp#
-ls
-rm -rf #start.cpp#
-ls
-cat CMakeLists.txt
-apt moo
-cd build
-ls
-make
-./Leo
-./Leo
-./Leo
-(+ 1 2)
-ls
-ls -al
-cd build
-ls
-./Leo
-ls
-cd /etc
+cd pdfmod
 ls
 cd 
 ls
-cd Downloads/
+mv sun_goes_down.tex Desktop/pdfmod/
 ls
-rm -rf exotica-theme
+python
+python3
+mkdir tenn_spec
+mv tenn_spec* tenn_spec/
+mv tenn_spec.org tenn_spec/
 ls
-cd build
-./Leo
-cd build
+ls tenn_spec/
+cd 
+apt show python3-pandas
+sudo apt install python3-pandas
+mdkir Desktop/arch
+cd arch
+touch arch.tex
 ls
-./Leo
-ls
-cd ~/leo
-ls
-cd build
-ls
-./Leo
-apt moo
-cmatrix
-cd ~/leo/build
-ls
-./Leo
-apt moo
-apt show python3
-ls
-ls
-clear
-clear
-ls
-ls
-ls
-ls
-./Leo
-./Leo
-ls
-clear
-clear
-clear
-clear
-apt moo
-ls
-cat Makefile
-mkdir leoc
-cd leoc
-mkdir build
-cp ~/leo/CMakeLists.txt ./
-ls
-cp ~/leo/start.cpp ./
-cd build
-cmake ../
-make
 ./leoc
-cd build
-cmake ../
-cmake ../
-make
-cd school
-ls
-cp -r resume ~/
-ls
-ls
-rm #start.cpp#
-ls
-ls
-mkdir lib
-cd ~/Down
-ls
-cd ~/Downloads/
-ls
-git clone https://github.com/glfw/glfw.git
-cp -r glfw ~/leoc/lib
-ls
-git clone https://github.com/nigels-com/glew.git glew
-ls
-cp -r glew ~/leoc/lib
-cd ~/leoc/build
-cmake ../
-cmake ../
-make
-cmake ../
-cmake ../
-cmake ../
-cmake ../
-make
-cd build
-cmake ../
-make
 ./leoc
 ls
-cd walls
+cd ..
+ls
+cd lib
+ls
+ls glew
+ls glfw
+ls 
 ls
 ls
-mkdir june_trip
-mv calc.py june_trip/calc.py
-cd june_trip/
+ls -algoXh
+ls
+ls
+ls
+ls
+ls cd Desktop/
+ls
+cd Desktop/
+ls
+ls
+ls
+mkdir lecpp
+ls leo
+cd lecpp
+cd build
+cmake ./
+cmake ../
+cmake --help
+cmake ../
+ls ~/leo/build/
+mv CMakeLists.txt ../
+ls
+cmake ../
+cmake ../
+cmake ..
+cmake ../
+rm *
+rm -rf *
+ls
+cmake ../
+ls
+make
+ls
+./lecpp
+make
+ls
+./lecpp
+make
+./lecpp
+make
+./lecpp
+cmake ../
+make
+cmake ../
+make
+make
+ls
+./grammar
+when in the course of human human
+./grammar
+make
+./grammar
+make
+./grammar
+make
+./hello
+./grammar
+cd build
+ls
+./grammar
+cd build
+make
+./hello
+cd build
+cmake ./
+make
+make
+cd build
+ls
+make
+touch todo
+cd build
+ls
+touch keith_notes
 ls
