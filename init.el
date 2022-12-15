@@ -57,9 +57,10 @@
 
 
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-refresh-contents t)
 
 (ivy-mode t)
-(require 'which-key)
+;; (require 'which-key)
 (which-key-mode t)
 ;; (global-flycheck-mode t)
 
@@ -91,7 +92,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("a44e2d1636a0114c5e407a748841f6723ed442dc3a0ed086542dc71b92a87aee" "a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "2dd4951e967990396142ec54d376cced3f135810b2b69920e77103e0bcedfba9" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" "6c81128ce261cbaca1ff6f6c79b70ed1ace6fb41e0118192a8e156d3d90a2d3e" "ff375cb365f7797dc6fdeabcce5aacefb3faa8c7877b6108f21dea9145e51382" "79792f78ed3a9a3ecc5865a3ecfeb79b6e8ee6f3321f3ff841c292570cf2d4d5" "80d5a22931c15756b00fb258b80c93b8bc5096bb698dadfb6155ef3550e1c8fb" "068094823c93de12cfa966207b80ffe155cfbe816e7d6e1abbd2a05aa2820f23"))
+   '("ddffe74bc4bf2c332c2c3f67f1b8141ee1de8fd6b7be103ade50abb97fe70f0c" "a44e2d1636a0114c5e407a748841f6723ed442dc3a0ed086542dc71b92a87aee" "a138ec18a6b926ea9d66e61aac28f5ce99739cf38566876dc31e29ec8757f6e2" "2dd4951e967990396142ec54d376cced3f135810b2b69920e77103e0bcedfba9" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" "6c81128ce261cbaca1ff6f6c79b70ed1ace6fb41e0118192a8e156d3d90a2d3e" "ff375cb365f7797dc6fdeabcce5aacefb3faa8c7877b6108f21dea9145e51382" "79792f78ed3a9a3ecc5865a3ecfeb79b6e8ee6f3321f3ff841c292570cf2d4d5" "80d5a22931c15756b00fb258b80c93b8bc5096bb698dadfb6155ef3550e1c8fb" "068094823c93de12cfa966207b80ffe155cfbe816e7d6e1abbd2a05aa2820f23"))
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
  '(package-selected-packages
