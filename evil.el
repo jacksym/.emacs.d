@@ -34,10 +34,10 @@
 
 
 (evil-define-key 'normal 'global (kbd "<leader> W") 'save-buffer)
-(evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
+(evil-define-key 'normal 'global (kbd "<leader> F") 'find-file)
 (evil-define-key 'normal 'global (kbd "<leader> b") 'ivy-switch-buffer)
 
-(evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
+(evil-define-key 'normal 'global (kbd "<leader> f") 'dired-jump)
 
 (evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
 
