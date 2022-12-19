@@ -2,7 +2,7 @@
 ;; Jack Symonds
 
 ;; LSP
-;; python3	--> python3-pyls
+;; python3	--> python3-pylsp
 ;; C++		--> clangd
 
 (global-company-mode)
@@ -49,6 +49,7 @@
 	(display-line-numbers-mode t)
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
+	;; #'tree-sitter-mode	
 	))
 
 ;;C++
@@ -59,6 +60,8 @@
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
 	(company-mode)
+	(flycheck-mode t)
+	;; #'tree-sitter-mode	
 	))
 
 ;; (add-hook 'c++-mode-hook 'eglot-ensure)
@@ -70,14 +73,16 @@
 
 
 ;; PYTHON
-(add-hook 'python-mode-hook (lambda ()
+(add-hook 'python-mode-hook
+	(lambda ()
 	(display-line-numbers-mode t)
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
+	(flycheck-mode t)
 	))
 
 ;; (add-to-list 'eglot-server-programs '((python-mode) "pyls"))
-;; (add-hook 'python-mode-hook 'eglot-ensure)
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 (setq python-shell-interpreter "python3")
 
