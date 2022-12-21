@@ -24,10 +24,9 @@
 ;; (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 
-(add-hook 'dired-mode-hook (lambda ()
-                             (hl-line-mode t)
-                             ;; (local-set-key [mouse-1] 'dired-find-file)
-                             ))
+(add-hook 'dired-mode-hook (lambda () (hl-line-mode t)))
+;; (local-set-key [mouse-1] 'dired-find-file)
+(add-hook 'buffer-menu-mode-hook (lambda () (hl-line-mode t)))
 
 
 ;; EMACS LISP
@@ -42,7 +41,11 @@
 	  (display-line-numbers-mode t)
 	  (hl-line-mode t)
 	  (electric-pair-local-mode t)
+	(local-set-key (kbd "C-c C-c") 'eval-buffer)
 	  ))
+
+;; (local-set-key (kbd "C-c C-c") 'eval-buffer)
+
 
 ;; C
 (add-hook 'c-mode-hook (lambda ()
@@ -63,8 +66,7 @@
 	(flycheck-mode t)
 	;; #'tree-sitter-mode	
 	))
-
-;; (add-hook 'c++-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
 
 
 ;; (add-hook 'c++-mode-hook (lambda ()
@@ -80,8 +82,6 @@
 	(electric-pair-local-mode t)
 	(flycheck-mode t)
 	))
-
-;; (add-to-list 'eglot-server-programs '((python-mode) "pyls"))
 (add-hook 'python-mode-hook 'eglot-ensure)
 
 (setq python-shell-interpreter "python3")
@@ -150,5 +150,23 @@
 ;; 'doc-view-fit-width-to-window
 'doc-view-fit-page-to-window
 )
+
+
+;; SES
+
+(setq ses-after-entry-functions '(next-line))
+(setq ses-initial-column-width 10)
+(setq ses-initial-size '(50 . 5))
+(add-hook 'ses-mode-hook
+	(lambda ()
+	(hl-line-mode t)
+	))
+	
+;; CSV
+
+(add-hook 'csv-mode-hook
+	(lambda ()
+	(hl-line-mode t)
+	))
 
 

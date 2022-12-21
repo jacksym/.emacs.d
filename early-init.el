@@ -12,7 +12,7 @@
 (setq tab-bar-close-button-show nil)
 (global-set-key (kbd "C-<next>") 'tab-next)
 (global-set-key (kbd "C-<prior>") 'tab-previous)
-(global-set-key (kbd "C-t") 'tab-new)
+;; (global-set-key (kbd "C-t") 'tab-new)
 
 
 (set-face-attribute 'default nil :family "Monego" :height 140)
@@ -34,14 +34,17 @@
 (global-tree-sitter-mode)
 
 
-;; (load-theme 'doom-solarized-dark t)
-(load-theme 'doom-dracula t)
+;; (load-theme 'doom-dracula t)
 ;; (load-theme 'doom-tokyo-night t)
+;; (load-theme 'doom-solarized-dark t)
 ;; (load-theme 'doom-monokai-pro t)
+;; (load-theme 'doom-monokai-classic t)
 ;; (load-theme 'doom-molokai t) ;; like sublime
-;; (load-theme 'doom-ir-black t) ;; black background
+;; (load-theme 'doom-gruvbox t)
+(load-theme 'doom-ir-black t) ;; black background
 ;; (load-theme 'doom-one t) ;; like atom
 ;; (load-theme 'doom-1337 t) ;; like vs-code
+;; (load-theme 'doom-dark+ t) ;; like vs-code
 
 
 (doom-modeline-mode 1)

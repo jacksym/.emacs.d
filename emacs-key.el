@@ -64,6 +64,13 @@
 
 
 
+(defun jack-small-window ()
+  (interactive)
+  (shrink-window 15)
+)
+;; (global-set-key (kbd "C-M-S-m") 'jack-small-window)
+(global-set-key (kbd "C-x 8") 'jack-small-window)
+
 
 ;; (defun jack-high () (interactive))
 ;; (global-set-key (kbd "M-H"))
