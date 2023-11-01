@@ -1,0 +1,19 @@
+
+make sparse keymap / evil collection
+dired maps
+dired customization
+customize buffer list
+get icons
+modify modeline / headerline completely
+right clicks?
+figure out keymap-global-set
+sideline filetree?
+global variables for themeing
+change color of 'cammand' line
+tree-sitter
+filetype/ major mode folder
+
+run python in terminal
+stol mode
+company display and tab customizations
+
