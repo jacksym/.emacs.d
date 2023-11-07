@@ -1,6 +1,10 @@
 ;; Jack Symonds Evil Configuration
 
 (evil-mode 1)
+(setq evil-want-C-u-delete t) ;; in insert mode
+(setq evil-want-C-u-scroll t) ;; in normal mode
+(modify-syntax-entry ?_ "w") ;; underscores included in words
+
 ;; (evil-set-undo-system 'undo-tree)
 (evil-set-leader 'normal (kbd "SPC"))
 
@@ -40,10 +44,20 @@
 (evil-define-key 'normal 'global (kbd "<leader> w s") 'split-window-below)
 (evil-define-key 'normal 'global (kbd "<leader> w o") 'delete-other-windows)
 
+
+
 (evil-define-key 'normal 'global (kbd "<leader> o") 'find-file)
 (evil-define-key 'normal 'global (kbd "<leader> SPC") 'j-list-buffers)
+
 (evil-define-key 'normal 'global (kbd "<leader> f") 'dired-jump)
-(evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
+;; (evil-define-key 'normal 'dired-mode-map (kbd "h") 'dired-up-directory)
+;; (evil-define-key 'normal 'dired-mode-map (kbd "l") 'dired-open-file)
+;; (evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
+
+(evil-define-key 'normal 'global (kbd "<leader> RET") 'shell)
+(evil-define-key 'insert shell-mode-map (kbd "<up>") 'comint-previous-input)
+(evil-define-key 'insert shell-mode-map (kbd "<down>") 'comint-next-input)
+(define-key shell-mode-map (kbd "C-c") 'comint-interrupt-subjob)
 
 ;; (add-hook 'python-mode-hook (lambda ()
 ;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)

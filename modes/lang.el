@@ -24,7 +24,6 @@
 ;; (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 
-(add-hook 'dired-mode-hook (lambda () (hl-line-mode t)))
 ;; (local-set-key [mouse-1] 'dired-find-file)
 (add-hook 'buffer-menu-mode-hook (lambda () (hl-line-mode t)))
 

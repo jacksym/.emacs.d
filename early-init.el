@@ -24,4 +24,4 @@
 ;; (load-theme 'solarized-dark t)
 ;; (load-theme 'monokai t)
 ;; (load-theme 'gruvbox t)
-(load-theme 'after-black t)
+;; (load-theme 'after-black t)
