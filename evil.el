@@ -50,8 +50,8 @@
 (evil-define-key 'normal 'global (kbd "<leader> SPC") 'j-list-buffers)
 
 (evil-define-key 'normal 'global (kbd "<leader> f") 'dired-jump)
-;; (evil-define-key 'normal 'dired-mode-map (kbd "h") 'dired-up-directory)
-;; (evil-define-key 'normal 'dired-mode-map (kbd "l") 'dired-open-file)
+(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
 ;; (evil-define-key 'normal 'global (kbd "<leader> t") 'my-term)
 
 (evil-define-key 'normal 'global (kbd "<leader> RET") 'shell)

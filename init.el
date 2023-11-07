@@ -34,14 +34,6 @@
 (add-hook 'text-scale-mode-hook (lambda() (face-remap--remap-face 'line-number)))
 
 
-
-
-(setq dired-listing-switches "-agoXh --group-directories-first")
-;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
-;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
-
-
-
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 
 
@@ -107,3 +99,4 @@
 ;; Doc View?
 ;; (setq doc-view-resolution 400)
 ;; (setq doc-view-continuous t)
+(put 'dired-find-alternate-file 'disabled nil)
