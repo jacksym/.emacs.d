@@ -1,0 +1,7 @@
+
+*.saves
+todo.txt
+elpa/
+pkgs/
+auto-save-list
+#*
