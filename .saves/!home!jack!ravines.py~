@@ -1,6 +1,0 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
-rav_main = [[649, 36, -37], [565, 36, -16]]
-rav_2 = [[648, 24, -74], [563, 28, -37]]
-rav_3 = [[606, 25, -153], [590, 22, -79]]
