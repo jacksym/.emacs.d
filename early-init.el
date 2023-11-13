@@ -10,7 +10,6 @@
 (setq scroll-bar-width 8)
 (setq scroll-bar-height 8)
 
-(load-file "~/.emacs.d/modeline.el")
 
 ;; (global-tab-line-mode)
 ;; (tab-bar-mode)
@@ -19,7 +18,9 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
+;; (load-theme 'manoj-dark t)
 ;; (load-theme 'dracula t)
+(load-theme 'shades-of-purple t)
 ;; (load-theme 'tokyo-night t)
 ;; (load-theme 'solarized-dark t)
 ;; (load-theme 'monokai t)

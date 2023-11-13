@@ -1,4 +1,8 @@
-;;; A simple Emacs major mode for STOL as used in ITOS 9.4.0
+;;; stol-mode.el --- A simple Emacs major mode for STOL as used in ITOS 9.4.0  -*- lexical-binding: t -*-
+
+;; Author: NASA
+;; Maintainer: Jack Symonds
+;; Version: 9.4.1
 
 ;;;; Notices:
 
@@ -25,6 +29,9 @@
 ;; SHALL INDEMNIFY AND HOLD HARMLESS THE UNITED STATES GOVERNMENT, ITS CONTRACTORS AND SUBCONTRACTORS, AS WELL
 ;; AS ANY PRIOR RECIPIENT, TO THE EXTENT PERMITTED BY LAW.  RECIPIENT'S SOLE REMEDY FOR ANY SUCH MATTER SHALL
 ;; BE THE IMMEDIATE, UNILATERAL TERMINATION OF THIS AGREEMENT.
+
+
+;;; Code:
 
 (defvar stol-mode-syntax-table nil "Syntax table for `stol-mode'.")
 
@@ -188,10 +195,20 @@
 ; STOL is case-insensitive so font-lock-keywords are identified without regard for case
 (setq font-lock-keywords-case-fold-search 1)
 
+;;;###autoload
+
 ;; Could base this on fortran-mode or f90-mode, since STOL is related syntactically, but these modes introduce
 ;; a bunch of other stuff that isn't in STOL
-(define-derived-mode stol-mode prog-mode "STOL" "Major mode for editing STOL procedure scripts."
+(define-derived-mode stol-mode prog-mode "STOL"
+  "Major mode for editing STOL procedure scripts."
+  :syntax-table stol-mode-syntax-table
   (setq font-lock-defaults '(stol-font-lock-keywords nil font-lock-keywords-case-fold-search)))
 
-;; File name ends in .proc (case insensitive).
-(setq auto-mode-alist (append '(("\\.proc" . stol-mode)) auto-mode-alist))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.scr\\'" . stol-mode))
+;; (setq auto-mode-alist (append '(("\\.proc" . stol-mode)) auto-mode-alist))
+
+
+(provide 'stol-mode)
+
+;;; stol-mode.el ends here
