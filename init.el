@@ -12,6 +12,10 @@
 (setq make-backup-files nil)
 (setq default-directory "~/")
 
+(setq next-screen-context-lines 25)
+(setq case-fold-searcht t)
+(setq isearch-lazy-highlight nil)
+
 (set-default 'truncate-lines t)
 
 (pixel-scroll-precision-mode 1)
@@ -22,6 +26,7 @@
 (setq hscroll-margin 16)
 (setq scroll-conservatively 1001)
 (setq mouse-wheel-tilt-scroll t)
+(setq mouse-wheel-flip-direction t)
 (setq mouse-wheel-progressive-speed nil)
 (setq auto-window-vscroll nil)
 
@@ -32,7 +37,7 @@
 (setq backward-delete-char-untabify-method 'hungry)
 
 (if (window-system)
-	(set-frame-height (selected-frame) 30))
+	(set-frame-height (selected-frame) 25))
 
 (add-hook 'text-scale-mode-hook (lambda() (face-remap--remap-face 'line-number)))
 
@@ -59,7 +64,14 @@
 (which-key-setup-side-window-right-bottom)
 ;; (global-flycheck-mode t)
 
-(load-file "~/.emacs.d/evil.el")
+(cond
+ ((eq system-type 'windows-nt)
+	(load-file "~/.emacs.d/evil.el"))
+ ((eq system-type 'darwin)
+	  (load-file "~/.emacs.d/macos-evil.el"))
+ ;; ((eq system-type 'gnu/linux)
+  ;; (load-file "~/.emacs.d/linux-evil.el"))
+)
 
 ;; (load-file "~/.emacs.d/modeline.el")
 (load-file "~/.emacs.d/misc-funcs.el")
