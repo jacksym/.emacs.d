@@ -31,6 +31,9 @@
 (setq tab-width 4)
 (setq backward-delete-char-untabify-method 'hungry)
 
+(if (window-system)
+	(set-frame-height (selected-frame) 30))
+
 (add-hook 'text-scale-mode-hook (lambda() (face-remap--remap-face 'line-number)))
 
 

@@ -59,6 +59,8 @@
 (evil-define-key 'normal 'global (kbd "<leader> RET") 'shell)
 (evil-define-key '(normal insert) shell-mode-map (kbd "<up>") 'comint-previous-input)
 (evil-define-key '(normal insert) shell-mode-map (kbd "<down>") 'comint-next-input)
+(evil-define-key '(normal insert) shell-mode-map (kbd "M-k") 'comint-previous-input)
+(evil-define-key '(normal insert) shell-mode-map (kbd "M-j") 'comint-next-input)
 (define-key shell-mode-map (kbd "C-c") 'comint-interrupt-subjob)
 
 ;; (add-hook 'python-mode-hook (lambda ()
