@@ -39,14 +39,19 @@
 	)
 
 (evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
+(define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
 (evil-define-key 'normal 'global (kbd "<leader> SPC") 'j-list-buffers)
 
-
 (evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
-(define-key dired-mode-map (kbd "SPC") nil)
-(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
-(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
-
+(eval-after-load 'dired
+  '(progn
+	(define-key dired-mode-map (kbd "SPC") nil)
+	(define-key dired-mode map (kbd "n") nil)
+	(define-key dired-mode map (kbd "N") nil)
+	(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
+	(put 'dired-find-alternate-file 'disabled nil)
+	(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
+))
 
 (evil-define-key 'normal 'global (kbd "<leader> RET") 'shell)
 (evil-define-key '(normal insert) shell-mode-map
