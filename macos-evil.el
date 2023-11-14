@@ -4,7 +4,7 @@
 (modify-syntax-entry ?_ "w") ;; underscores included in words
 
 (menu-bar-mode 1)
-(setq dired-us-ls-dired-nil) ;; for Mac
+(setq dired-us-ls-dired nil) ;; for Mac
 (setq insert-directory-program "gls") ;; for Mac
 
 (evil-set-leader 'normal (kbd "SPC"))
