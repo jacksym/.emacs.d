@@ -46,8 +46,8 @@
 (eval-after-load 'dired
   '(progn
 	(define-key dired-mode-map (kbd "SPC") nil)
-	(define-key dired-mode map (kbd "n") nil)
-	(define-key dired-mode map (kbd "N") nil)
+	(define-key dired-mode-map (kbd "n") nil)
+	(define-key dired-mode-map (kbd "N") nil)
 	(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
 	(put 'dired-find-alternate-file 'disabled nil)
 	(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
