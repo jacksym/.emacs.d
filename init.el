@@ -48,30 +48,35 @@
 (require 'package)
 
 (package-initialize)
-;; (package-refresh-contents t)
 
-(add-to-list 'load-path "~/Downloads/all-the-icons.el/")
+(add-to-list 'load-path "~/.emacs.d/pkgs/all-the-icons/")
 (when (display-graphic-p)
   (require 'all-the-icons))
 
-(load-file "~/Downloads/all-the-icons-dired/all-the-icons-dired.el")
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 
-;; (ivy-mode t)
 ;; (require 'which-key)
 (which-key-mode t)
 (which-key-setup-side-window-right-bottom)
-;; (global-flycheck-mode t)
+
 
 (cond
- ((eq system-type 'windows-nt)
-	(load-file "~/.emacs.d/evil.el"))
+ ;; ((eq system-type 'windows-nt)
+	;; (load-file "~/.emacs.d/evil.el"))
  ((eq system-type 'darwin)
-	  (load-file "~/.emacs.d/macos-evil.el"))
+	(menu-bar-mode 1)
+	(setq ls-lisp-use-insert-directory-program nil)
+	(require 'ls-lisp)
+	(setq ns-command-modifier 'control)
+	(setq ns-option-modifier 'meta)
+	(setq ns-control-modifier 'super)
+	(setq ns-function-modifier 'hyper)
+	)
  ;; ((eq system-type 'gnu/linux)
   ;; (load-file "~/.emacs.d/linux-evil.el"))
 )
+
+(load-file "~/.emacs.d/evil.el")
 
 ;; (load-file "~/.emacs.d/modeline.el")
 (load-file "~/.emacs.d/misc-funcs.el")
@@ -93,7 +98,7 @@
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(stol-mode tree-sitter tree-sitter-langs eglot company which-key flycheck s evil)))
+   '(all-the-icons stol-mode tree-sitter tree-sitter-langs eglot company which-key flycheck s evil)))
 (put 'scroll-left 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -103,7 +108,6 @@
  )
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-(put 'dired-find-alternate-file 'disabled nil)
 
 ;; (setq tsc-dyn-get-from nil)
 ;; (setq tree-sitter-langs-git-dir nil)
