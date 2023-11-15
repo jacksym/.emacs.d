@@ -8,7 +8,6 @@ be ready with ssh config options for DiPietro
 customize DIRED dired-dwin-target
 make sparse keymap
 rename in directory
-STOL mode customization
 
 
 make sparse keymap / evil collection
@@ -29,6 +28,7 @@ scrolling momentum
 bookmarks
 emacsclient
 fonts in emacshelp and dired
+get background color
 
 run python in terminal -- not default
 stol mode

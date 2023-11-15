@@ -1,21 +1,31 @@
 ;; Jack Symonds Python configuration
 
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(python-mode . ("pyright"))))
+
+
 (add-hook 'python-mode-hook
 	(lambda ()
 	(display-line-numbers-mode t)
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
-	(flycheck-mode t)
+	(flymake-mode)
 	))
+
+(add-hook 'python-mode-hook (lambda ()
+	(setq whitespace-style
+		'(face spaces space-mark trailing)
+		)
+	(whitespace-mode t)
+	;; (set-face-attribute 'whitespace-tab nil :foreground "gray" :background "unspecified")
+	(set-face-attribute 'whitespace-space nil :foreground "gray" :background "unspecified")
+	))
+
 ;; (add-hook 'python-mode-hook 'eglot-ensure)
 
 (setq python-shell-interpreter "python3")
-
-(defun my-shell-python ()
-  (interactive)
-  ;; (save-buffer)
-  (shell-command-on-region (point-min) (point-max) "python3"))
 
 
 

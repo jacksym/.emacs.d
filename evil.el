@@ -7,6 +7,8 @@
 
 ;; (evil-set-undo-system 'undo-tree)
 (evil-set-leader 'normal (kbd "SPC"))
+(evil-set-leader 'motion (kbd "SPC"))
+
 
 (keymap-global-set "C-<next>" 'tab-next)
 (keymap-global-set "C-<prior>" 'tab-previous)
@@ -28,7 +30,8 @@
 (evil-define-key 'visual 'global (kbd "C-c") 'clipboard-kill-ring-save)
 (evil-define-key 'insert 'global (kbd "C-v") 'clipboard-yank)
 
-(evil-define-key 'normal 'global
+
+(evil-define-key '(normal motion) 'global
   (kbd "<leader> h") 'windmove-left
   (kbd "<leader> j") 'windmove-down
   (kbd "<leader> k") 'windmove-up
@@ -39,10 +42,13 @@
   (kbd "<leader> L") 'evil-window-move-far-right
   )
 
-(evil-define-key 'normal 'global (kbd "<leader> w c") 'delete-window)
-(evil-define-key 'normal 'global (kbd "<leader> w v") 'split-window-right)
-(evil-define-key 'normal 'global (kbd "<leader> w s") 'split-window-below)
-(evil-define-key 'normal 'global (kbd "<leader> w o") 'delete-other-windows)
+(evil-define-key '(normal motion) 'global
+  (kbd "<leader> w c") 'delete-window
+  (kbd "<leader> w v") 'split-window-right
+  (kbd "<leader> w s") 'split-window-below
+  (kbd "<leader> w o") 'delete-other-windows
+  (kbd "<leader> w m") 'minimize-window
+)
 
 
 
@@ -60,6 +66,7 @@
 	(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
 	(put 'dired-find-alternate-file 'disabled nil)
 	(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
+	(evil-define-key 'normal dired-mode-map (kbd "RET") 'dired-find-file-other-window)
 	)
 )
 

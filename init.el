@@ -98,7 +98,7 @@
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(all-the-icons stol-mode tree-sitter tree-sitter-langs eglot company which-key flycheck s evil)))
+   '(all-the-icons stol-mode eglot company which-key s evil)))
 (put 'scroll-left 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
