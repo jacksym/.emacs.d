@@ -5,23 +5,28 @@
   (add-to-list 'eglot-server-programs
                '(python-mode . ("pyright"))))
 
+;; (add-to-list 'treesit-language-source-alist
+			 ;; '(python "https://github.com/tree-sitter/tree-sitter-python.git")
+			 ;; )
 
-(add-hook 'python-mode-hook
-	(lambda ()
+(add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
+
+(defun python-settings ()
 	(display-line-numbers-mode t)
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
 	(flymake-mode)
-	))
 
-(add-hook 'python-mode-hook (lambda ()
 	(setq whitespace-style
 		'(face spaces space-mark trailing)
 		)
-	(whitespace-mode t)
+	;; (whitespace-mode t)
 	;; (set-face-attribute 'whitespace-tab nil :foreground "gray" :background "unspecified")
-	(set-face-attribute 'whitespace-space nil :foreground "gray" :background "unspecified")
-	))
+	;; (set-face-attribute 'whitespace-space nil :foreground "gray" :background "unspecified")
+  )
+
+(add-hook 'python-mode-hook 'python-settings)
+(add-hook 'python-ts-mode-hook 'python-settings)
 
 ;; (add-hook 'python-mode-hook 'eglot-ensure)
 

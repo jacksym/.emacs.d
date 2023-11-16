@@ -76,6 +76,7 @@
   (kbd "<down>") 'comint-next-input
   (kbd "M-k") 'comint-previous-input
   (kbd "M-j") 'comint-next-input
+  (kbd "<return>") 'comint-send-input
 )
 (define-key shell-mode-map (kbd "C-c") 'comint-interrupt-subjob)
 
