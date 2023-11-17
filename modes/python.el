@@ -3,7 +3,7 @@
 
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(python-mode . ("pyright"))))
+               '(python-mode . ("pylsp"))))
 
 ;; (add-to-list 'treesit-language-source-alist
 ;; 			 '(python "https://github.com/tree-sitter/tree-sitter-python.git")
@@ -16,6 +16,7 @@
 	(hl-line-mode t)
 	(electric-pair-local-mode t)
 	(flymake-mode)
+	(eglot)
 
 	(setq whitespace-style
 		'(face spaces space-mark trailing)
