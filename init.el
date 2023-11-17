@@ -49,9 +49,6 @@
 
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/pkgs/all-the-icons/")
-(when (display-graphic-p)
-  (require 'all-the-icons))
 
 
 

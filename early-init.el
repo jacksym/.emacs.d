@@ -5,19 +5,12 @@
 (scroll-bar-mode -1)
 ;; (tooltip-mode -1)
 
-(cond
- ((eq system-type 'windows-nt)
-	(set-face-attribute 'default nil :family "Monego" :height 140))
- ((eq system-type 'darwin)
-	(set-face-attribute 'default nil :family "Monaco" :height 160))
- ;; ((eq system-type 'gnu/linux)
-  ;; (load-file "~/.emacs.d/linux-evil.el"))
-)
 
 (setq scroll-bar-width 8)
 (setq scroll-bar-height 8)
 
 
+(load-file "~/.emacs.d/fonts/fonts.el")
 ;; (global-tab-line-mode)
 ;; (tab-bar-mode)
 (setq tab-line-new-button-show nil)

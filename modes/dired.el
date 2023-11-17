@@ -1,8 +1,5 @@
 ;; Jack Symonds DIRED customization
 
-(load-file "~/.emacs.d/pkgs/all-the-icons-dired.el")
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-;; (set-face-attribute 'all-the-icons-dired-dir-face nil :background "unspecified")
 
 
 (setq dired-listing-switches "-al --group-directories-first")
@@ -12,11 +9,11 @@
 
 ;; (setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
 
+(setq dired-dwim-target t)
 
 
 (add-hook 'dired-mode-hook (lambda ()
 							(hl-line-mode t)
 							(dired-hide-details-mode)
-							(buffer-face-set :family "Arial")
 							(setq mouse-1-click-follows-link nil)
 							))
