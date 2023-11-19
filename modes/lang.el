@@ -5,34 +5,36 @@
 ;; python3	--> python3-pylsp
 ;; C++		--> clangd
 
-(global-company-mode)
-(setq company-global-modes '(python-mode c++-mode emacs-lisp-mode))
 (setq company-idle-delay 0.0)
 (setq company-minimum-prefex-length 1)
 
-(with-eval-after-load 'company
-  (define-key company-active-map
-              (kbd "TAB")
-              #'company-complete-common-or-cycle)
-  (define-key company-active-map
-              (kbd "<backtab>")
-              (lambda ()
-                (interactive)
-                (company-complete-common-or-cycle -1))))
+;; (with-eval-after-load 'company
+;;   (define-key company-active-map
+;;               (kbd "TAB")
+;;               #'company-complete-common-or-cycle)
+;;   (define-key company-active-map
+;;               (kbd "<backtab>")
+;;               (lambda ()
+;;                 (interactive)
+;;                 (company-complete-common-or-cycle -1))))
 
-;; (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
+;; ;; (global-set-key (kbd "<tab>") #'company-indent-or-complete-common)
 ;; (global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 
 
 ;; (local-set-key [mouse-1] 'dired-find-file)
 (add-hook 'buffer-menu-mode-hook (lambda () (hl-line-mode t)))
 
+(add-hook 'shell-mode-hook (lambda ()
+	(setq-local scroll-margin 1)
+	))
 
 ;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook (lambda ()
 	  (display-line-numbers-mode t)
-	  (hl-line-mode t)
+	  ;; (hl-line-mode t)
 	  (electric-pair-local-mode t)
+	  (company-mode)
 	  ))
 
 ;; LISP
@@ -76,11 +78,6 @@
 
 
 
-(defun jack-one-compile ()
-(if (get-buffer "*eshell*")
-(message "get buffer works; this buffer is %s" (buffer-name))
-)
-)
 
 
 ;;SQL

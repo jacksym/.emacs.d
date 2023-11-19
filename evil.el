@@ -80,6 +80,13 @@
 )
 (define-key shell-mode-map (kbd "C-c") 'comint-interrupt-subjob)
 
+
+(eval-after-load 'python
+  '(progn
+	(evil-define-key 'normal python-mode-map (kbd "<leader> p") 'execute-python-in-shell)
+	)
+)
+
 ;; (add-hook 'python-mode-hook (lambda ()
 ;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
 ;; 	))
