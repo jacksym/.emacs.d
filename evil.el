@@ -50,6 +50,9 @@
   (kbd "<leader> w m") 'minimize-window
 )
 
+(evil-define-key '(normal motion) 'global
+  (kbd "<leader> 5") 'make-frame-command
+)
 
 
 (evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
@@ -84,6 +87,7 @@
 (eval-after-load 'python
   '(progn
 	(evil-define-key 'normal python-mode-map (kbd "<leader> p") 'execute-python-in-shell)
+	(evil-define-key 'normal python-mode-map (kbd "<f5>") 'execute-python-in-shell)
 	)
 )
 

@@ -25,9 +25,9 @@
 ;; (local-set-key [mouse-1] 'dired-find-file)
 (add-hook 'buffer-menu-mode-hook (lambda () (hl-line-mode t)))
 
-(add-hook 'shell-mode-hook (lambda ()
-	(setq-local scroll-margin 1)
-	))
+;; (add-hook 'shell-mode-hook (lambda ()
+	;; (setq-local scroll-margin 2)
+	;; ))
 
 ;; EMACS LISP
 (add-hook 'emacs-lisp-mode-hook (lambda ()
