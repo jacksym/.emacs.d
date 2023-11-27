@@ -2,7 +2,6 @@
 ;; Jack Symonds
 
 ;; LSP
-;; python3	--> python3-pylsp
 ;; C++		--> clangd
 
 (setq company-idle-delay 0.0)

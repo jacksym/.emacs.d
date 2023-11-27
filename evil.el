@@ -48,6 +48,7 @@
   (kbd "<leader> w s") 'split-window-below
   (kbd "<leader> w o") 'delete-other-windows
   (kbd "<leader> w m") 'minimize-window
+  (kbd "<leader> w d") 'kill-buffer
 )
 
 

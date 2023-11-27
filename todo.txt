@@ -5,7 +5,7 @@ git config
 
 ssh training / ssh networks list.
 be ready with ssh config options for DiPietro
-customize DIRED dired-dwin-target
+customize DIRED dired-dwim-target
 make sparse keymap
 rename in directory
 

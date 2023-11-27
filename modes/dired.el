@@ -2,7 +2,7 @@
 
 
 
-(setq dired-listing-switches "-al --group-directories-first")
+(setq dired-listing-switches "-Al --group-directories-first")
 ;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 ;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 ;; (define-key dired-mode-map (kbd "<mouse-1>") 'dired-find-alternate-file)

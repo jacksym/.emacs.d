@@ -51,12 +51,6 @@
 
 
 
-
-;; (require 'which-key)
-(which-key-mode t)
-(which-key-setup-side-window-right-bottom)
-
-
 (cond
  ;; ((eq system-type 'windows-nt)
 	;; (load-file "~/.emacs.d/evil.el"))
@@ -95,8 +89,7 @@
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
  '(minimap-dedicated-window t)
- '(package-selected-packages
-   '(minimap all-the-icons stol-mode eglot company which-key s evil)))
+ '(package-selected-packages '(minimap all-the-icons stol-mode eglot company s evil)))
 (put 'scroll-left 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
