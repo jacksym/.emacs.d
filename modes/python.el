@@ -9,6 +9,9 @@
 ;; 			 '(python "https://github.com/tree-sitter/tree-sitter-python.git")
 ;; 			 )
 
+;; (setq python-indent-offset 'tab-width)
+(setq python-indent-guess-indent-offset-verbose nil)
+
 ;; (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
 (defun python-settings ()
@@ -32,7 +35,6 @@
 
 ;; (add-hook 'python-mode-hook 'eglot-ensure)
 
-(setq python-shell-interpreter "python3")
 
 (defun execute-python-in-shell ()
   "Append 'python {filepath}' to a shell buffer and execute the command."
@@ -50,7 +52,8 @@
             (with-current-buffer shell-buffer
               (goto-char (point-max))
               (insert python-command)
-              (comint-send-input))))
+              (comint-send-input)
+			  (end-of-buffer))))
       (message "Buffer is not associated with a file or file doesn't exist."))))
 
 

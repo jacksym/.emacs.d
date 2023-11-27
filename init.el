@@ -50,7 +50,6 @@
 (package-initialize)
 
 
-
 (cond
  ;; ((eq system-type 'windows-nt)
 	;; (load-file "~/.emacs.d/evil.el"))
