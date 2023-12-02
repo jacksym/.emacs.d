@@ -70,7 +70,7 @@
 	(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
 	(put 'dired-find-alternate-file 'disabled nil)
 	(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
-	(evil-define-key 'normal dired-mode-map (kbd "RET") 'dired-find-file-other-window)
+	;; (evil-define-key 'normal dired-mode-map (kbd "RET") 'dired-find-file-other-window)
 	)
 )
 
