@@ -70,7 +70,7 @@
 	(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory)
 	(put 'dired-find-alternate-file 'disabled nil)
 	(evil-define-key 'normal dired-mode-map (kbd "l") 'dired-find-alternate-file)
-	(evil-define-key 'normal dired-mode-map (kbd "RET") 'dired-find-file-other-window)
+	;; (evil-define-key 'normal dired-mode-map (kbd "RET") 'dired-find-file-other-window)
 	)
 )
 
@@ -87,8 +87,11 @@
 
 (eval-after-load 'python
   '(progn
-	(evil-define-key 'normal python-mode-map (kbd "<leader> p") 'execute-python-in-shell)
-	(evil-define-key 'normal python-mode-map (kbd "<f5>") 'execute-python-in-shell)
+	(evil-define-key 'normal python-mode-map
+	  (kbd "<leader> p") 'execute-python-in-shell
+	  (kbd "<f5>") 'execute-python-in-shell
+	  (kbd "<leader> b") 'pdb
+	  )
 	)
 )
 

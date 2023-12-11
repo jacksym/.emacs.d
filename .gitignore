@@ -4,5 +4,7 @@ todo.txt
 elpa/
 auto-save-list/
 tree-sitter/
+server/
+eln-cache/
 \#*
 .\#*

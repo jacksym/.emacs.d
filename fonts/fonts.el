@@ -2,7 +2,8 @@
 
 (cond
  ((eq system-type 'windows-nt)
-	(set-face-attribute 'default nil :family "Monego" :height 140))
+	;; (set-face-attribute 'default nil :family "Monego" :height 140))
+	(set-face-attribute 'default nil :family "Consolas" :height 160))
  ((eq system-type 'darwin)
 	(set-face-attribute 'default nil :family "Monaco" :height 160))
  ;; ((eq system-type 'gnu/linux)

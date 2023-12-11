@@ -51,8 +51,10 @@
 
 
 (cond
- ;; ((eq system-type 'windows-nt)
+ ((eq system-type 'windows-nt)
+	(add-to-list 'exec-path "C:/cygwin64/bin")
 	;; (load-file "~/.emacs.d/evil.el"))
+	)
  ((eq system-type 'darwin)
 	(menu-bar-mode 1)
 	(setq ls-lisp-use-insert-directory-program nil)
