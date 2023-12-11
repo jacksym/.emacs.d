@@ -3,5 +3,6 @@
 todo.txt
 elpa/
 auto-save-list/
+tree-sitter/
 \#*
 .\#*
