@@ -87,8 +87,11 @@
 
 (eval-after-load 'python
   '(progn
-	(evil-define-key 'normal python-mode-map (kbd "<leader> p") 'execute-python-in-shell)
-	(evil-define-key 'normal python-mode-map (kbd "<f5>") 'execute-python-in-shell)
+	(evil-define-key 'normal python-mode-map
+	  (kbd "<leader> p") 'execute-python-in-shell
+	  (kbd "<f5>") 'execute-python-in-shell
+	  (kbd "<leader> b") 'pdb
+	  )
 	)
 )
 
