@@ -59,10 +59,17 @@
 
 (evil-define-key '(normal motion) 'global (kbd "<leader> f") 'find-file)
 (evil-define-key '(normal motion) 'global (kbd "<leader> F") 'recentf-open-files)
-
+(evil-set-initial-state 'recentf-dialog-mode 'motion)
+(evil-define-key 'motion 'recentf-dialog-mode-map
+  (kbd "1") 'recentf-open-most-recent-file-1)
+  (kbd "2") 'recentf-open-most-recent-file-2)
+  (kbd "3") 'recentf-open-most-recent-file-3)
+  (kbd "4") 'recentf-open-most-recent-file-4)
+  (kbd "5") 'recentf-open-most-recent-file-5)
+)
 
 (define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
-(evil-define-key 'normal 'global (kbd "<leader> SPC") 'j-list-buffers)
+(evil-define-key '(normal motion) 'global (kbd "<leader> SPC") 'j-list-buffers)
 
 
 (evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)

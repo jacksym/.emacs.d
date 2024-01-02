@@ -52,7 +52,7 @@
 (package-initialize)
 
 (recentf-mode 1)
-(setq recentf-max-menu-items 10)
+(setq recentf-max-menu-items 5)
 
 
 (cond
