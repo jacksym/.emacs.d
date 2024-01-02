@@ -56,11 +56,18 @@
   (kbd "<leader> 5") 'make-frame-command
 )
 
+(evil-define-key '(normal motion) 'global (kbd "<leader> r l") 'list-bookmarks)
+(evil-define-key 'normal 'global (kbd "<leader> r m") 'bookmark-set)
+(evil-set-initial-state 'bookmark-bmenu-mode 'motion)
+(evil-define-key 'motion bookmark-bmenu-mode-map
+  (kbd "<return>") 'bookmark-bmenu-this-window
+)
+
 
 (evil-define-key '(normal motion) 'global (kbd "<leader> f") 'find-file)
 (evil-define-key '(normal motion) 'global (kbd "<leader> F") 'recentf-open-files)
 (evil-set-initial-state 'recentf-dialog-mode 'motion)
-(evil-define-key 'motion 'recentf-dialog-mode-map
+(evil-define-key 'motion recentf-dialog-mode-map
   (kbd "1") 'recentf-open-most-recent-file-1
   (kbd "2") 'recentf-open-most-recent-file-2
   (kbd "3") 'recentf-open-most-recent-file-3
