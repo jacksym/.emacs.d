@@ -16,7 +16,7 @@
 
 (defun python-settings ()
 	(display-line-numbers-mode t)
-	(hl-line-mode t)
+	;; (hl-line-mode t)
 	(electric-pair-local-mode t)
 	(flymake-mode)
 	(company-mode)

@@ -4,8 +4,9 @@
 (setq evil-want-C-u-delete t) ;; in insert mode
 (setq evil-want-C-u-scroll t) ;; in normal mode
 (modify-syntax-entry ?_ "w") ;; underscores included in words
+(evil-set-undo-system 'undo-redo)
+(evil-select-search-module 'evil-search-module 'evil-search)
 
-;; (evil-set-undo-system 'undo-tree)
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-set-leader 'motion (kbd "SPC"))
 
@@ -56,7 +57,10 @@
 )
 
 
-(evil-define-key 'normal 'global (kbd "<leader> f") 'find-file)
+(evil-define-key '(normal motion) 'global (kbd "<leader> f") 'find-file)
+(evil-define-key '(normal motion) 'global (kbd "<leader> F") 'recentf-open-files)
+
+
 (define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
 (evil-define-key 'normal 'global (kbd "<leader> SPC") 'j-list-buffers)
 

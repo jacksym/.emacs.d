@@ -44,10 +44,15 @@
 
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 
 (require 'package)
 
 (package-initialize)
+
+(recentf-mode 1)
+(setq recentf-max-menu-items 10)
 
 
 (cond
@@ -56,13 +61,16 @@
 	;; (load-file "~/.emacs.d/evil.el"))
 	)
  ((eq system-type 'darwin)
-	(menu-bar-mode 1)
+    (if (eq window-system 'ns)
+		(menu-bar-mode 1)
+	)
 	(setq ls-lisp-use-insert-directory-program nil)
 	(require 'ls-lisp)
 	(setq ns-command-modifier 'control)
 	(setq ns-option-modifier 'meta)
 	(setq ns-control-modifier 'super)
 	(setq ns-function-modifier 'hyper)
+	(setq explicit-shell-file-name "/bin/zsh")
 	)
  ;; ((eq system-type 'gnu/linux)
   ;; (load-file "~/.emacs.d/linux-evil.el"))
