@@ -19,6 +19,6 @@
 (load-file "~/.emacs.d/fonts/all-the-icons-dired.el")
 (add-hook 'dired-mode-hook (lambda ()
 	(all-the-icons-dired-mode)
-	(buffer-face-set :family "Arial")
+	;; (buffer-face-set :family "Arial")
 ))
 ;; (set-face-attribute 'all-the-icons-dired-dir-face nil :background "unspecified")

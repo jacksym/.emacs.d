@@ -49,8 +49,8 @@
 
 (require 'package)
 
-(package-initialize)
-
+;; (package-initialize)
+(require 'recentf)
 (recentf-mode 1)
 (setq recentf-max-menu-items 5)
 
@@ -58,6 +58,8 @@
 (cond
  ((eq system-type 'windows-nt)
 	(add-to-list 'exec-path "C:/cygwin64/bin")
+	(setq grep-program "C:/cygwin64/bin/grep.exe")
+	(setq find-program "C:/cygwin64/bin/find.exe")
 	;; (load-file "~/.emacs.d/evil.el"))
 	)
  ((eq system-type 'darwin)
@@ -77,7 +79,6 @@
 )
 
 (load-file "~/.emacs.d/evil.el")
-
 ;; (load-file "~/.emacs.d/modeline.el")
 (load-file "~/.emacs.d/misc-funcs.el")
 

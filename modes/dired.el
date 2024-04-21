@@ -2,7 +2,7 @@
 
 
 
-(setq dired-listing-switches "-Al --group-directories-first")
+(setq dired-listing-switches "-AlXhG --group-directories-first")
 ;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 ;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 ;; (define-key dired-mode-map (kbd "<mouse-1>") 'dired-find-alternate-file)
@@ -14,6 +14,6 @@
 
 (add-hook 'dired-mode-hook (lambda ()
 							(hl-line-mode t)
-							(dired-hide-details-mode)
+							;; (dired-hide-details-mode)
 							(setq mouse-1-click-follows-link nil)
 							))

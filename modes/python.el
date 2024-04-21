@@ -9,6 +9,7 @@
 ;; 			 '(python "https://github.com/tree-sitter/tree-sitter-python.git")
 ;; 			 )
 
+(setq python-indent-offset 4)
 ;; (setq python-indent-offset 'tab-width)
 (setq python-indent-guess-indent-offset-verbose nil)
 
@@ -18,9 +19,9 @@
 	(display-line-numbers-mode t)
 	;; (hl-line-mode t)
 	(electric-pair-local-mode t)
-	(flymake-mode)
+	;; (flymake-mode)
 	(company-mode)
-	(eglot-ensure)
+	;; (eglot-ensure)
 
 	(setq whitespace-style
 		'(face spaces space-mark trailing)

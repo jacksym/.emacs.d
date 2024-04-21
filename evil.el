@@ -11,10 +11,8 @@
 (evil-set-leader 'motion (kbd "SPC"))
 
 
-(keymap-global-set "C-<next>" 'tab-next)
-(keymap-global-set "C-<prior>" 'tab-previous)
-(keymap-global-set "C-S-<next>" '(lambda () (interactive) (tab-move 1)))
-
+(keymap-global-set "C-<next>" 'tab-bar-switch-to-next-tab)
+(keymap-global-set "C-<prior>" 'tab-bar-switch-to-prev-tab)
 
 (keymap-global-set "C-/" 'comment-line)
 
@@ -28,9 +26,13 @@
 
 ;; (global-set-key "C-o" 'find-file)
 
+(evil-define-key 'emacs 'global (kbd "C-c") 'clipboard-kill-ring-save)
+(evil-define-key 'emacs 'global (kbd "C-v") 'clipboard-yank)
 (evil-define-key 'visual 'global (kbd "C-c") 'clipboard-kill-ring-save)
 (evil-define-key 'insert 'global (kbd "C-v") 'clipboard-yank)
 
+;; (evil-define-key 'insert 'global (kbd "DEL") 'backward-delete-char)
+(evil-define-key '(normal motion) 'global (kbd "<leader> t") 'tab-new)
 
 (evil-define-key '(normal motion) 'global
   (kbd "<leader> h") 'windmove-left
@@ -50,19 +52,8 @@
   (kbd "<leader> w o") 'delete-other-windows
   (kbd "<leader> w m") 'minimize-window
   (kbd "<leader> w d") 'kill-buffer
-)
-
-(evil-define-key '(normal motion) 'global
   (kbd "<leader> 5") 'make-frame-command
 )
-
-(evil-define-key '(normal motion) 'global (kbd "<leader> r l") 'list-bookmarks)
-(evil-define-key 'normal 'global (kbd "<leader> r m") 'bookmark-set)
-(evil-set-initial-state 'bookmark-bmenu-mode 'motion)
-(evil-define-key 'motion bookmark-bmenu-mode-map
-  (kbd "<return>") 'bookmark-bmenu-this-window
-)
-
 
 (evil-define-key '(normal motion) 'global (kbd "<leader> f") 'find-file)
 (evil-define-key '(normal motion) 'global (kbd "<leader> F") 'recentf-open-files)
@@ -73,11 +64,19 @@
   (kbd "3") 'recentf-open-most-recent-file-3
   (kbd "4") 'recentf-open-most-recent-file-4
   (kbd "5") 'recentf-open-most-recent-file-5
+  ;; (kbd "e") 'recentf-edit-list
+  ;; (kbd "x") 'recentf-edit-list-validate
+)
+
+(evil-define-key '(normal motion) 'global (kbd "<leader> r l") 'list-bookmarks)
+(evil-define-key 'normal 'global (kbd "<leader> r m") 'bookmark-set)
+(evil-set-initial-state 'bookmark-bmenu-mode 'motion)
+(evil-define-key 'motion bookmark-bmenu-mode-map
+  (kbd "<return>") 'bookmark-bmenu-this-window
 )
 
 (define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
 (evil-define-key '(normal motion) 'global (kbd "<leader> SPC") 'j-list-buffers)
-
 
 (evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
 (eval-after-load 'dired
@@ -113,11 +112,16 @@
 	)
 )
 
-;; (add-hook 'python-mode-hook (lambda ()
-;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-shell-python)
-;; 	))
+(eval-after-load 'sql
+  '(progn
+	 (keymap-global-set "C-U" 'sql-connect)
+	 (evil-define-key '(visual) sql-mode-map (kbd "<return>") 'sql-send-region)
+	 (evil-define-key '(normal insert visual) sql-mode-map (kbd "S-<return>") 'sql-clear-and-send)
+	 )
+  )
 
-;; (add-hook 'tex-mode-hook (lambda ()
-;; 	(evil-define-key 'normal 'local (kbd "<leader> c") 'my-compile-latex)
-;; 	))
-
+(eval-after-load 'eglot
+  '(progn
+	 (evil-define-key '(normal) 'global (kbd "<leader> L") 'eglot)
+	 )
+  )
