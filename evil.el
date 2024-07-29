@@ -107,7 +107,7 @@
 	(evil-define-key 'normal python-mode-map
 	  (kbd "<leader> p") 'execute-python-in-shell
 	  (kbd "<f5>") 'execute-python-in-shell
-	  (kbd "<leader> b") 'pdb
+	  (kbd "<leader> P") 'execute-pdb-in-shell
 	  )
 	)
 )
@@ -125,3 +125,11 @@
 	 (evil-define-key '(normal) 'global (kbd "<leader> L") 'eglot)
 	 )
   )
+
+
+(eval-after-load 'tex-mode
+  '(progn
+	 (evil-define-key '(normal) tex-mode-map (kbd "<leader> p") 'my-compile-latex)
+	 )
+  )
+

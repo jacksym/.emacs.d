@@ -58,6 +58,27 @@
       (message "Buffer is not associated with a file or file doesn't exist."))))
 
 
+(defun execute-pdb-in-shell ()
+  "Append 'python {filepath}' to a shell buffer and execute the command."
+  (interactive)
+  (let ((file-path (buffer-file-name)))
+    (if (and file-path (file-exists-p file-path))
+        (progn
+          (let* ((shell-buffer-name "*shell*")
+                 (shell-buffer (get-buffer shell-buffer-name))
+                 (python-command (format "python -m pdb %s" file-path)))
+            (if (not shell-buffer)
+                (progn
+                  (shell)
+                  (setq shell-buffer (get-buffer shell-buffer-name))))
+            (with-current-buffer shell-buffer
+              (goto-char (point-max))
+              (insert python-command)
+              (comint-send-input)
+			  (end-of-buffer))))
+      (message "Buffer is not associated with a file or file doesn't exist."))))
+
+
 ;; one-button-compile
 ;; get path of current C++ file
 ;; !shell-exists open shell in window below

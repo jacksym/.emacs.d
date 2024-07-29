@@ -12,6 +12,15 @@
 (setq make-backup-files nil)
 (setq default-directory "~/")
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (load-theme 'manoj-dark t)
+;; (load-theme 'dracula t)
+;; (load-theme 'tokyo-night t)
+;; (load-theme 'solarized-dark t)
+;; (load-theme 'monokai t)
+(load-theme 'gruvbox t)
+;; (load-theme 'after-black t)
+
 (setq next-screen-context-lines 25)
 (setq case-fold-searcht t)
 (setq isearch-lazy-highlight nil)
@@ -99,7 +108,8 @@
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
  '(minimap-dedicated-window t)
- '(package-selected-packages '(minimap all-the-icons stol-mode eglot company s evil)))
+ '(package-selected-packages
+   '(solarized-theme gruvbox-theme minimap all-the-icons stol-mode eglot company s evil)))
 (put 'scroll-left 'disabled nil)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

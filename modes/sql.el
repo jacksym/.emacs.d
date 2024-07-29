@@ -31,3 +31,4 @@
   (with-current-buffer sql-buffer
 	(goto-char (point-min))
   )
+  )
