@@ -1,8 +1,8 @@
 ;; Jack Symonds DIRED customization
 
 (add-hook 'stol-mode-hook (lambda ()
-							(display-line-numbers-mode t)
-							(electric-pair-local-mode)
+							;; (display-line-numbers-mode t)
+							;; (electric-pair-local-mode)
 							(hl-line-mode t)
 						   (setq tab-width 3)
 						   (setq evil-shift-width 3)

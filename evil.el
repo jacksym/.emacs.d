@@ -1,6 +1,16 @@
 ;; Jack Symonds Evil Configuration
 
-(evil-mode 1)
+
+
+(setq evil-want-C-u-delete t) ;; in insert mode
+(setq evil-want-C-u-scroll t) ;; in normal mode
+(modify-syntax-entry ?_ "w") ;; underscores included in words
+(evil-set-undo-system 'undo-redo)
+(evil-select-search-module 'evil-search-module 'evil-search)
+
+(evil-set-leader 'normal (kbd "SPC"))
+(evil-set-leader 'motion (kbd "SPC"))
+;; (evil-mode 1)
 (setq evil-want-C-u-delete t) ;; in insert mode
 (setq evil-want-C-u-scroll t) ;; in normal mode
 (modify-syntax-entry ?_ "w") ;; underscores included in words
@@ -76,7 +86,7 @@
 )
 
 (define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
-(evil-define-key '(normal motion) 'global (kbd "<leader> SPC") 'j-list-buffers)
+(evil-define-key '(normal motion) 'global (kbd "<leader> SPC") 'buffer-menu)
 
 (evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
 (eval-after-load 'dired
@@ -116,7 +126,7 @@
   '(progn
 	 (keymap-global-set "C-U" 'sql-connect)
 	 (evil-define-key '(visual) sql-mode-map (kbd "<return>") 'sql-send-region)
-	 (evil-define-key '(normal insert visual) sql-mode-map (kbd "S-<return>") 'sql-clear-and-send)
+	 ;; (evil-define-key '(normal insert visual) sql-mode-map (kbd "S-<return>") 'sql-clear-and-send)
 	 )
   )
 

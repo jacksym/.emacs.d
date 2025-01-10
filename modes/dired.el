@@ -11,9 +11,14 @@
 
 (setq dired-dwim-target t)
 
+(add-to-list 'load-path "~/.emacs.d/fonts/all-the-icons/")
+(use-package all-the-icons
+  :if (display-graphic-p))
+(load-file "~/.emacs.d/fonts/all-the-icons-dired.el")
 
 (add-hook 'dired-mode-hook (lambda ()
 							(hl-line-mode t)
 							;; (dired-hide-details-mode)
 							(setq mouse-1-click-follows-link nil)
+							(all-the-icons-dired-mode)
 							))

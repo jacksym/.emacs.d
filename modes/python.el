@@ -16,11 +16,11 @@
 ;; (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
 
 (defun python-settings ()
-	(display-line-numbers-mode t)
+	;; (display-line-numbers-mode t)
 	;; (hl-line-mode t)
-	(electric-pair-local-mode t)
+	;; (electric-pair-local-mode t)
 	;; (flymake-mode)
-	(company-mode)
+	;; (company-mode)
 	;; (eglot-ensure)
 
 	(setq whitespace-style
