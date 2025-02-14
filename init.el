@@ -95,6 +95,7 @@
 
 (use-package company
   :defer t
+  :ensure t
   :init
 	(setq company-idle-delay 0.0)
 	(setq company-minimum-prefex-length 1)
@@ -114,8 +115,10 @@
 
 (log-init-time "packages and mode files")
 
-(add-to-list 'load-path "~/.emacs.d/codeium.el")
+;; (add-to-list 'load-path "~/.emacs.d/codeium.el")
 (use-package codeium
+  :load-path "~/.emacs.d/codeium.el"
+  :ensure t
   :init
 	(add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
 )

@@ -10,3 +10,4 @@ eln-cache/
 .\#*
 recentf
 bookmarks
+.emacs.desktop*
