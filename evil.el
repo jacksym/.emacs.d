@@ -11,30 +11,19 @@
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-set-leader 'motion (kbd "SPC"))
 ;; (evil-mode 1)
-(setq evil-want-C-u-delete t) ;; in insert mode
-(setq evil-want-C-u-scroll t) ;; in normal mode
-(modify-syntax-entry ?_ "w") ;; underscores included in words
-(evil-set-undo-system 'undo-redo)
-(evil-select-search-module 'evil-search-module 'evil-search)
-
-(evil-set-leader 'normal (kbd "SPC"))
-(evil-set-leader 'motion (kbd "SPC"))
-
 
 (keymap-global-set "C-<next>" 'tab-bar-switch-to-next-tab)
 (keymap-global-set "C-<prior>" 'tab-bar-switch-to-prev-tab)
 
-(keymap-global-set "C-/" 'comment-line)
+(evil-define-key 'normal 'global (kbd "C-/") 'comment-line)
+(evil-define-key 'visual 'global (kbd "C-/") 'comment-or-uncomment-region)
 
 (keymap-global-set "C-s" 'save-buffer)
 (keymap-global-set "C-w" 'kill-buffer-ask)
 
 (keymap-global-set "C-=" 'text-scale-increase)
 (keymap-global-set "C--" 'text-scale-decrease)
-;; (keymap-global-set (kbd "<C-wheel-up>") 'text-scale-increase)
-;; (keymap-global-set (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-;; (global-set-key "C-o" 'find-file)
 
 (evil-define-key 'emacs 'global (kbd "C-c") 'clipboard-kill-ring-save)
 (evil-define-key 'emacs 'global (kbd "C-v") 'clipboard-yank)
