@@ -6,8 +6,12 @@ auto-save-list/
 tree-sitter/
 server/
 eln-cache/
+codeium/
+tree-sitter/
 \#*
 .\#*
-recentf
+condeium.el
 bookmarks
-.emacs.desktop*
+recentf
+*.desktop
+.DS_Store
