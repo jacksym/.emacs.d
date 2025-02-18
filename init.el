@@ -116,12 +116,12 @@
 (log-init-time "packages and mode files")
 
 ;; (add-to-list 'load-path "~/.emacs.d/codeium.el")
-(use-package codeium
-  :load-path "~/.emacs.d/codeium.el"
-  :ensure t
-  :init
-	(add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-)
+;; (use-package codeium
+;;   :load-path "~/.emacs.d/codeium.el"
+;;   :ensure t
+;;   :init
+;; 	(add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+;; )
 ;; (load-file "~/.emacs.d/codeium.el/codeium.el")
 
 
