@@ -34,14 +34,19 @@
 (evil-define-key '(normal motion) 'global (kbd "<leader> t") 'tab-new)
 
 (evil-define-key '(normal motion) 'global
-  (kbd "<leader> h") 'windmove-left
-  (kbd "<leader> j") 'windmove-down
-  (kbd "<leader> k") 'windmove-up
-  (kbd "<leader> l") 'windmove-right
-  (kbd "<leader> H") 'evil-window-move-far-left
-  (kbd "<leader> J") 'evil-window-move-very-bottom
-  (kbd "<leader> K") 'evil-window-move-very-top
-  (kbd "<leader> L") 'evil-window-move-far-right
+  (kbd "M-h") 'windmove-left
+  (kbd "M-j") 'windmove-down
+  (kbd "M-k") 'windmove-up
+  (kbd "M-l") 'windmove-right
+  (kbd "<leader> M-h") 'evil-window-move-far-left
+  (kbd "<leader> M-j") 'evil-window-move-very-bottom
+  (kbd "<leader> M-k") 'evil-window-move-very-top
+  (kbd "<leader> M-l") 'evil-window-move-far-right
+  )
+
+(evil-define-key '(normal motion) 'global
+  (kbd "M-H") 'tab-bar-switch-to-prev-tab
+  (kbd "M-L") 'tab-bar-switch-to-next-tab
   )
 
 (evil-define-key '(normal motion) 'global
@@ -51,7 +56,7 @@
   (kbd "<leader> w o") 'delete-other-windows
   (kbd "<leader> w m") 'minimize-window
   (kbd "<leader> w d") 'kill-buffer
-  (kbd "<leader> 5") 'make-frame-command
+  ;; (kbd "<leader> 5 b") 'make-frame-command
 )
 
 (evil-define-key '(normal motion) 'global (kbd "<leader> f") 'find-file)
@@ -76,6 +81,20 @@
 
 (define-key Buffer-menu-mode-map (kbd "<return>") 'Buffer-menu-this-window)
 (evil-define-key '(normal motion) 'global (kbd "<leader> SPC") 'buffer-menu)
+
+(defun Buffer-menu-delete-all ()
+  "Mark for deletion all buffers in `buffer-menu-mode`, except *Messages* and *scratch*."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (not (eobp))
+      (let ((bufname (buffer-name (Buffer-menu-buffer t))))
+        (unless (or (string= bufname "*Messages*")
+                    (string= bufname "*scratch*"))
+          (Buffer-menu-delete)))
+      )))
+
+(evil-define-key '(normal motion) 'Buffer-menu-mode-map (kbd "D") 'Buffer-menu-delete-all)
 
 (evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
 (eval-after-load 'dired
