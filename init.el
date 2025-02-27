@@ -8,7 +8,7 @@
 (setq inhibit-splash-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
-(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 (setq use-dialog-box nil)
 (show-paren-mode 1) (setq show-paren-delay 1)
 (setq make-backup-files nil)
