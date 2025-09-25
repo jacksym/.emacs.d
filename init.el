@@ -107,11 +107,17 @@
   (log-init-time (format "%s" file))
   )
 
+;; (setq-default whitespace-style '(face indentation trailing-whitespace space-mark tab-mark))
+(setq-default tab-width 1)
+(setq-default whitespace-style '(face indentation))
+
+;; (setq-default whitespace-space-regexp "\\(^ +\\)")
 (add-hook 'prog-mode-hook (lambda ()
     (display-line-numbers-mode t)
-	(electric-pair-local-mode t)
-	(company-mode)
-))
+    (electric-pair-local-mode t)
+    (company-mode)
+    (whitespace-mode)
+	))
 
 (log-init-time "packages and mode files")
 
@@ -153,18 +159,3 @@
 ;; (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 ;; (global-tree-sitter-mode)
 
-
-;; Doc View?
-;; (setq doc-view-resolution 400)
-;; (setq doc-view-continuous t)
-
-;; (with-eval-after-load 'minimap
-;; 	(setq minimap-window-location "right")
-;; 	(setq minimap-width-fraction 0.05)
-;; )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

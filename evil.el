@@ -34,10 +34,6 @@
 (evil-define-key '(normal motion) 'global (kbd "<leader> t") 'tab-new)
 
 (evil-define-key '(normal motion) 'global
-  (kbd "M-h") 'windmove-left
-  (kbd "M-j") 'windmove-down
-  (kbd "M-k") 'windmove-up
-  (kbd "M-l") 'windmove-right
   (kbd "<leader> M-h") 'evil-window-move-far-left
   (kbd "<leader> M-j") 'evil-window-move-very-bottom
   (kbd "<leader> M-k") 'evil-window-move-very-top
@@ -50,6 +46,10 @@
   )
 
 (evil-define-key '(normal motion) 'global
+  (kbd "<leader> w h") 'windmove-left
+  (kbd "<leader> w j") 'windmove-down
+  (kbd "<leader> w k") 'windmove-up
+  (kbd "<leader> w l") 'windmove-right
   (kbd "<leader> w c") 'delete-window
   (kbd "<leader> w v") 'split-window-right
   (kbd "<leader> w s") 'split-window-below
@@ -94,7 +94,7 @@
           (Buffer-menu-delete)))
       )))
 
-(evil-define-key '(normal motion) 'Buffer-menu-mode-map (kbd "D") 'Buffer-menu-delete-all)
+;; (evil-define-key '(normal motion) 'Buffer-menu-mode-map (kbd "D") 'Buffer-menu-delete-all)
 
 (evil-define-key 'normal 'global (kbd "<leader> d") 'dired-jump)
 (eval-after-load 'dired

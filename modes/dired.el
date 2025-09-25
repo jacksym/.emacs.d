@@ -14,9 +14,9 @@
 (add-to-list 'load-path "~/.emacs.d/fonts/all-the-icons/")
 (use-package all-the-icons
   :load-path "~/.emacs.d/fonts/all-the-icons/"
-  :ensure t
   :if (display-graphic-p))
-	(load-file "~/.emacs.d/fonts/all-the-icons-dired.el")
+
+(load-file "~/.emacs.d/fonts/all-the-icons-dired.el")
 
 (add-hook 'dired-mode-hook (lambda ()
 							(hl-line-mode t)
