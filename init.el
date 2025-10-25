@@ -1,7 +1,6 @@
 ;; Jack Symonds .emacs.d/init.el
 
-
-(log-init-time "starting (after log func definition)")
+(log-init-time "beginning of init.el")
 
 (tooltip-mode 0)
 (setq inhibit-startup-message t)
@@ -13,8 +12,8 @@
 (show-paren-mode 1) (setq show-paren-delay 1)
 (setq make-backup-files nil)
 (setq default-directory "~/")
+(setq project-mode-line t)
 
-(log-init-time "very basic settings")
 
 (setq next-screen-context-lines 25)
 (setq case-fold-searcht t)
@@ -49,49 +48,45 @@
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-
-(log-init-time "more basic settings (with scroll stuff)")
+(setq ediff-split-window-function 'split-window-horizontally)
 
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
 (setq recentf-max-menu-items 5)
 
-(log-init-time "recentf stuff")
 
 (cond
  ((eq system-type 'windows-nt)
-	(add-to-list 'exec-path "C:/cygwin64/bin")
-	(setq grep-program "C:/cygwin64/bin/grep.exe")
-	(setq find-program "C:/cygwin64/bin/find.exe")
-	;; (load-file "~/.emacs.d/evil.el"))
+				(add-to-list 'exec-path "C:/cygwin64/bin")
+				(setq grep-program "C:/cygwin64/bin/grep.exe")
+				(setq find-program "C:/cygwin64/bin/find.exe")
 	)
  ((eq system-type 'darwin)
     (if (eq window-system 'ns)
-		(menu-bar-mode 1)
-	)
-	(setq ls-lisp-use-insert-directory-program nil)
-	(require 'ls-lisp)
-	(setq ns-command-modifier 'control)
-	(setq ns-option-modifier 'meta)
-	(setq ns-control-modifier 'super)
-	(setq ns-function-modifier 'hyper)
-	(setq explicit-shell-file-name "/bin/zsh")
+								(menu-bar-mode 1)
+				)
+				(require 'ls-lisp)
+				(setq ls-lisp-dirs-first nil)
+				(setq ls-lisp-use-insert-directory-program nil)
+				(setq ns-command-modifier 'control)
+				(setq ns-option-modifier 'meta)
+				(setq ns-control-modifier 'super)
+				(setq ns-function-modifier 'hyper)
+				(setq explicit-shell-file-name "/bin/zsh")
 	)
  ((eq system-type 'gnu/linux)
   )
 )
 
-(log-init-time "OS condition checking")
 
 ;; (package-initialize)
 (use-package evil
   :ensure t
   :config
-  (load "~/.emacs.d/evil.el")
+  (load "~/.emacs.d/evil.elc")
   (evil-mode 1)
   )
 
-(log-init-time "evil bind")
 
 (use-package company
   :defer t
@@ -103,8 +98,7 @@
 
 (defvar mode-dir "~/.emacs.d/modes")
 (dolist (file (directory-files mode-dir t "\\.el$"))
-  (load file)
-  (log-init-time (format "%s" file))
+  (load file nil t)
   )
 
 ;; (setq-default whitespace-style '(face indentation trailing-whitespace space-mark tab-mark))
@@ -119,18 +113,6 @@
     (whitespace-mode)
 	))
 
-(log-init-time "packages and mode files")
-
-;; (add-to-list 'load-path "~/.emacs.d/codeium.el")
-;; (use-package codeium
-;;   :load-path "~/.emacs.d/codeium.el"
-;;   :ensure t
-;;   :init
-;; 	(add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-;; )
-;; (load-file "~/.emacs.d/codeium.el/codeium.el")
-
-
 
 
 (print (emacs-init-time))
@@ -140,22 +122,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(codeium/metadata/api_key "6d36e82d-bf82-4b4c-8440-8fbee76045a3")
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
- '(package-selected-packages '(all-the-icons stol-mode eglot company s evil)))
+ '(package-selected-packages '(stol-mode eglot company s evil)))
 (put 'scroll-left 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-
-;; (setq tsc-dyn-get-from nil)
-;; (setq tree-sitter-langs-git-dir nil)
-;; (setq tree-sitter-langs--bundle-version "0.12.8")
-;; (setq tree-sitter-langs--os "linux")
-;; (setq tree-sitter-langs-grammar-dir "~/.emacs.d/elpa/tree-sitter-langs-20221126.446/")
-;; (setq tree-sitter-langs--dir "~/.emacs.d/elpa/tree-sitter-langs-20221126.446/")
-
-
-;; (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-;; (global-tree-sitter-mode)
 

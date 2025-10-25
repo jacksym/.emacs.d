@@ -1,4 +1,4 @@
-;; Jack Symonds DIRED customization
+;; Jack Symonds STOL customization
 
 (add-hook 'stol-mode-hook (lambda ()
 							;; (display-line-numbers-mode t)
@@ -11,8 +11,6 @@
 						   (setq fill-column 120)
 						   (display-fill-column-indicator-mode)
 						   ))
-
-
 
 (setq backward-delete-char-untabify-method 'hungry)
 

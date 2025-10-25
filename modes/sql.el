@@ -1,21 +1,7 @@
 
-(require 'sql)
-(use-package sql
-  :ensure t
-  :hook sql-mode-hook)
 
 (setq sql-mysql-options '("-t" "-f" "-n" "--compression-algorithms=zlib"))
 
-
-
-
-;; (cond
-;;  ((eq system-type 'windows-nt)
-;; 	(setq sql-postgres-program "C:/Program Files/PostgreSQL/16/bin/psql.exe")
-;; 	)
-;;  ((eq system-type 'darwin)
-;; 	)
-;; )
 
 (add-hook 'sql-mode-hook (lambda ()
 			;; (display-line-numbers-mode t)

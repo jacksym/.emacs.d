@@ -21,6 +21,8 @@
 ;; (setq gc-cons-threshold most-positive-fixnum)
 ;; (add-hook 'emacs-startup-hook
 ;; 		  (lambda () (setq gc-cons-threshold (* 50 1000 1000))))
+(log-init-time "beginning of early-init")
+(setq frame-inhibit-implied-resize t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -42,7 +44,7 @@
 (setq scroll-bar-height 8)
 
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (load-theme 'manoj-dark t)
 (load-theme 'modus-vivendi t)
 
@@ -55,6 +57,7 @@
 ;; (load-theme 'gruvbox t)
 ;; (load-theme 'after-black t)
 
+(log-init-time "end of early-init")
 
 ;; (global-tab-line-mode)
 ;; (tab-bar-mode)

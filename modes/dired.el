@@ -3,6 +3,7 @@
 
 
 (setq dired-listing-switches "-AlXhG --group-directories-first")
+(setq dired-kill-when-opening-new-dired-buffer t)
 ;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 ;; (define-key dired-mode-map [mouse-2] 'dired-mouse-find-file)
 ;; (define-key dired-mode-map (kbd "<mouse-1>") 'dired-find-alternate-file)
@@ -11,16 +12,15 @@
 
 (setq dired-dwim-target t)
 
-(add-to-list 'load-path "~/.emacs.d/fonts/all-the-icons/")
-(use-package all-the-icons
-  :load-path "~/.emacs.d/fonts/all-the-icons/"
-  :if (display-graphic-p))
+;; (add-to-list 'load-path "~/.emacs.d/fonts/all-the-icons/")
+;; (use-package all-the-icons
+;;   :load-path "~/.emacs.d/fonts/all-the-icons/"
+;;   :if (display-graphic-p))
 
-(load-file "~/.emacs.d/fonts/all-the-icons-dired.el")
+;; (load-file "~/.emacs.d/fonts/all-the-icons-dired.el")
 
 (add-hook 'dired-mode-hook (lambda ()
 							(hl-line-mode t)
 							;; (dired-hide-details-mode)
 							(setq mouse-1-click-follows-link nil)
-							(all-the-icons-dired-mode)
 							))
