@@ -13,6 +13,7 @@
 (setq make-backup-files nil)
 (setq default-directory "~/")
 (setq project-mode-line t)
+(column-number-mode)
 
 
 (setq next-screen-context-lines 25)
@@ -88,13 +89,13 @@
   )
 
 
-(use-package company
-  :defer t
-  :ensure t
-  :init
-	(setq company-idle-delay 0.0)
-	(setq company-minimum-prefex-length 1)
-)
+;; (use-package company
+;;   :defer t
+;;   :ensure t
+;;   :init
+;; 	(setq company-idle-delay 0.0)
+;; 	(setq company-minimum-prefex-length 1)
+;; )
 
 (defvar mode-dir "~/.emacs.d/modes")
 (dolist (file (directory-files mode-dir t "\\.el$"))
@@ -109,10 +110,9 @@
 (add-hook 'prog-mode-hook (lambda ()
     (display-line-numbers-mode t)
     (electric-pair-local-mode t)
-    (company-mode)
     (whitespace-mode)
+				(company-mode)
 	))
-
 
 
 (print (emacs-init-time))
@@ -122,10 +122,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ede-project-directories '("c:/Users/jackj/test_repo"))
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
- '(package-selected-packages '(stol-mode eglot company s evil)))
+ '(package-selected-packages '(company eglot evil s stol-mode)))
 (put 'scroll-left 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
