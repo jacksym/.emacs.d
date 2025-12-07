@@ -89,7 +89,6 @@
 
 
 (use-package company
-  :defer t
   :ensure t
   :init
 	(setq company-idle-delay 0.0)

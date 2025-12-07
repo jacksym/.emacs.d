@@ -10,7 +10,8 @@ codeium/
 tree-sitter/
 \#*
 .\#*
-condeium.el
+codeium.el
+projects
 bookmarks
 recentf
 *.desktop
