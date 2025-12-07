@@ -22,10 +22,10 @@
 
 (set-default 'truncate-lines t)
 
-;; (pixel-scroll-precision-mode 1)
-;; (setq pixel-scroll-precision-use-momentum t)
+(pixel-scroll-precision-mode 1)
+(setq pixel-scroll-precision-use-momentum t)
 ;; (setq pixel-scroll-precision-large-scroll-height 40.0)
-;; (setq scroll-step 1)
+(setq scroll-step 1)
 (setq scroll-margin 2)
 (setq auto-window-vscroll nil)
 (setq hscroll-margin 16)
@@ -120,6 +120,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+(custom-set-variables
  '(ede-project-directories '("c:/Users/jackj/test_repo"))
  '(frame-background-mode nil)
  '(ispell-dictionary nil)
